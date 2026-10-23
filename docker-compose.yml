@@ -1,0 +1,68 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-jobtracker}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: ${POSTGRES_DB:-jobtracker}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-jobtracker}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  ml-service:
+    build: ./ml-service
+    environment:
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      LLM_MODEL: ${LLM_MODEL:-claude-haiku-5-5}
+      ML_API_KEY: ${ML_API_KEY:-}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ml-service/app:/srv/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  backend:
+    build:
+      context: ./backend
+      target: build   # dev stage; the default (final) stage is the production image
+    env_file: .env
+    environment:
+      PORT: 3001
+      DATABASE_URL: postgres://${POSTGRES_USER:-jobtracker}:${POSTGRES_PASSWORD:-change-me}@postgres:5432/${POSTGRES_DB:-jobtracker}
+      REDIS_URL: redis://redis:6379
+      ML_SERVICE_URL: http://ml-service:8000
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend/src:/app/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ml-service:
+        condition: service_started
+    command: npm run start:dev
+
+  frontend:
+    build: ./frontend
+    env_file: .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/app:/app/app
+    depends_on:
+      - backend
+    command: npm run dev
+
+volumes:
+  pgdata:
