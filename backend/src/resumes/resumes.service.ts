@@ -72,9 +72,23 @@ export class ResumesService {
     };
   }
 
-  private normalize(text: string) {
-    return text.replace(/\r\n?/g, '\n').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  // private normalize(text: string) {
+  //   return text.replace(/\r\n?/g, '\n').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  // }
+
+  private normalize(text: string | undefined | null): string {
+  if (typeof text !== 'string') {
+    throw new UnprocessableEntityException(
+      'Could not extract text from this resume. Please try another PDF or TXT file.',
+    );
   }
+
+  return text
+    .replace(/\r\n?/g, '\n')
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
 
   private async extractText(file: UploadedFile): Promise<string> {
     // Decide by content, not by the filename or the browser-supplied MIME type.
@@ -88,23 +102,66 @@ export class ResumesService {
     throw new BadRequestException('Only PDF or plain-text (.txt) resumes are supported');
   }
 
-  private async parsePdf(buffer: Buffer): Promise<string> {
-    try {
-      const res = await firstValueFrom(
-        this.http.post<{ text: string }>(`${this.mlUrl}/parse/pdf`, buffer, {
-          headers: { 'Content-Type': 'application/pdf', ...mlAuthHeaders() },
+//   private async parsePdf(buffer: Buffer): Promise<string> {
+//     try {
+//       const res = await firstValueFrom(
+//         this.http.post<{ text: string }>(`${this.mlUrl}/parse/pdf`, buffer, {
+//           headers: { 'Content-Type': 'application/pdf', ...mlAuthHeaders() },
+//           maxBodyLength: MAX_UPLOAD_BYTES * 2,
+//           timeout: mlTimeoutMs(),
+//         }),
+//       );
+//       return res.data.text;
+//     } catch (err: any) {
+//       const status = err?.response?.status;
+//       const detail = err?.response?.data?.detail;
+//       if ((status === 400 || status === 422) && typeof detail === 'string') {
+//         throw new UnprocessableEntityException(detail);
+//       }
+//       throw new BadGatewayException('PDF parsing service unavailable');
+//     }
+//   }
+// }
+
+private async parsePdf(buffer: Buffer): Promise<string> {
+  try {
+    const res = await firstValueFrom(
+      this.http.post<{ text: string }>(
+        `${this.mlUrl}/parse/pdf`,
+        buffer,
+        {
+          headers: {
+            'Content-Type': 'application/pdf',
+            ...mlAuthHeaders(),
+          },
           maxBodyLength: MAX_UPLOAD_BYTES * 2,
           timeout: mlTimeoutMs(),
-        }),
+        },
+      ),
+    );
+
+    const text = res.data?.text;
+
+    if (typeof text !== 'string') {
+      throw new BadGatewayException(
+        'PDF parsing service returned an invalid response',
       );
-      return res.data.text;
-    } catch (err: any) {
-      const status = err?.response?.status;
-      const detail = err?.response?.data?.detail;
-      if ((status === 400 || status === 422) && typeof detail === 'string') {
-        throw new UnprocessableEntityException(detail);
-      }
-      throw new BadGatewayException('PDF parsing service unavailable');
     }
+
+    return text;
+  } catch (err: any) {
+    if (err instanceof BadGatewayException) {
+      throw err;
+    }
+
+    const status = err?.response?.status;
+    const detail = err?.response?.data?.detail;
+
+    if ((status === 400 || status === 422) && typeof detail === 'string') {
+      throw new UnprocessableEntityException(detail);
+    }
+
+    throw new BadGatewayException('PDF parsing service unavailable');
   }
+}
 }
