@@ -5,7 +5,7 @@ flowchart LR
   UI[Next.js frontend] -->|REST + JWT| API[NestJS API]
   API --> DB[(PostgreSQL)]
   API -->|HTTP| ML[FastAPI ML service]
-  API -.->|week 2: jobs| Q[(Redis / BullMQ)]
+  API -.->|week 2: results| DB
 ```
 
 ## Design decisions
@@ -57,3 +57,19 @@ in Postgres with the `userId`. Matching uses the stored text: `POST /match/by-id
 The ML service is publicly reachable on free hosting, and `/extract?method=llm` can spend LLM budget.
 The backend sends `X-API-Key: $ML_API_KEY` and the ML service rejects other callers with 401 (`/health` stays open).
 If `ML_API_KEY` is unset the check is disabled, which is only meant for local development.
+
+## Hosting model (Vercel + Neon)
+
+Three Vercel projects from one repo (`frontend`, `backend`, `ml-service`) and Neon Postgres. The backend and ML service
+run as single serverless functions, so there is no long-lived process: no in-process queue, small DB pools
+(`DB_POOL_MAX`), request timeouts towards the ML service (`ML_TIMEOUT_MS`), a 4 MB upload cap (Vercel documents a
+4.5 MB request-body limit), and tables are created once from a developer machine rather than on startup.
+The Dockerfiles and `docker-compose.yml` are for local development.
+
+## Saved match results
+
+`POST /applications/:id/matches { resumeId }` runs the match inside the request (no queue: serverless functions cannot
+keep working after responding) and stores a `match_results` row: matcher name, score, per-requirement evidence (jsonb)
+and a snapshot of the resume filename. Deleting an application cascades to its results; deleting a resume keeps them
+(`resumeId` becomes null, the filename remains). Every lookup is scoped by `userId`.
+The `matcher` column is what the week 3 evaluation uses to compare keyword, TF-IDF and LLM matchers on the same inputs.

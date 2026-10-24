@@ -39,7 +39,7 @@ export default function ResumePanel({ resumes, onUpload, onDelete }: Props) {
       <summary>Resumes ({resumes.length})</summary>
 
       <label className="upload">
-        {busy ? 'Reading your resume…' : 'Upload a resume (PDF or .txt, up to 5 MB)'}
+        {busy ? 'Reading your resume…' : `Upload a resume (PDF or .txt, up to ${MAX_UPLOAD_MB} MB)`}
         <input type="file" accept=".pdf,.txt,application/pdf,text/plain" onChange={pick} disabled={busy} />
       </label>
       {localError && <p className="error" role="alert">{localError}</p>}

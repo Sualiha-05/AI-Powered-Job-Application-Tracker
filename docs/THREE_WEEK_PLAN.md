@@ -3,14 +3,14 @@
 ## Week 1: foundation + first ML endpoint
 - [ ] Docker Compose runs all services (verify on your machine)
 - [x] Auth, applications CRUD, kanban UI wired to the API (drag-and-drop + select fallback)
-- [x] Resume upload + PDF-to-text (PDF or .txt, 5 MB limit, text parsed in the ML service)
+- [x] Resume upload + PDF-to-text (PDF or .txt, 4 MB limit, text parsed in the ML service)
 - [x] LLM-based `/extract` with grounded quotes (keyword version kept as the baseline). Needs your API key to run for real
-- [ ] Skeleton deployed at a public URL (code is production-ready; follow DEPLOY.md)
+- [ ] Skeleton deployed at a public URL (code is ready for three Vercel projects + Neon; follow DEPLOY.md)
 
 ## Week 2: matching with evidence
 - [ ] Embeddings + LLM matcher returning the same `MatchResponse`
-- [ ] Matching as a background job (BullMQ + Redis)
-- [ ] Match results view with evidence in the UI
+- [x] Matching saved as a result row in Postgres (runs inside the request; Vercel functions cannot keep a worker alive, so no BullMQ/Redis and no pending state)
+- [x] Match dialog with evidence in the UI (keyword baseline for now)
 
 ## Week 3: evaluation, polish, launch
 - [ ] Labeled set + metrics for each matcher

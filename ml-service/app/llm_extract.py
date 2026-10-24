@@ -78,7 +78,13 @@ def get_llm_client() -> Any | None:
         return None
     import anthropic
 
-    return anthropic.Anthropic(api_key=key, timeout=30.0, max_retries=2)
+    # On hosts with short function limits (e.g. 10 s) set LLM_TIMEOUT_SECONDS=8 and LLM_MAX_RETRIES=0,
+    # otherwise the platform kills the request before we can return a clean 502.
+    return anthropic.Anthropic(
+        api_key=key,
+        timeout=float(os.getenv("LLM_TIMEOUT_SECONDS", "30")),
+        max_retries=int(os.getenv("LLM_MAX_RETRIES", "2")),
+    )
 
 
 def _norm(s: str) -> str:

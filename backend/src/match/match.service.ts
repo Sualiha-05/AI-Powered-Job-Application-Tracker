@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { BadGatewayException, BadRequestException, Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
-import { mlAuthHeaders } from '../common/ml-headers';
+import { mlAuthHeaders, mlTimeoutMs } from '../common/ml-headers';
 import { ApplicationsService } from '../applications/applications.service';
 import { ResumesService } from '../resumes/resumes.service';
 import { MatchByIdsDto, MatchDto } from './match.dto';
@@ -23,7 +23,7 @@ export class MatchService {
         this.http.post(
           `${this.baseUrl}/match`,
           { resume_text: dto.resumeText, job_description: dto.jobDescription },
-          { headers: mlAuthHeaders() },
+          { headers: mlAuthHeaders(), timeout: mlTimeoutMs() },
         ),
       );
       return res.data;

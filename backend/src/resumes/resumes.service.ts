@@ -9,10 +9,11 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { firstValueFrom } from 'rxjs';
 import { Repository } from 'typeorm';
-import { mlAuthHeaders } from '../common/ml-headers';
+import { mlAuthHeaders, mlTimeoutMs } from '../common/ml-headers';
 import { Resume } from './resume.entity';
 
-export const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
+// Vercel Functions document a 4.5 MB request-body limit, so stay under it.
+export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
 const MAX_TEXT_CHARS = 100_000;
 
 export interface UploadedFile {
@@ -93,6 +94,7 @@ export class ResumesService {
         this.http.post<{ text: string }>(`${this.mlUrl}/parse/pdf`, buffer, {
           headers: { 'Content-Type': 'application/pdf', ...mlAuthHeaders() },
           maxBodyLength: MAX_UPLOAD_BYTES * 2,
+          timeout: mlTimeoutMs(),
         }),
       );
       return res.data.text;

@@ -196,3 +196,72 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
   max-height: 180px;
   overflow: auto;
 }
+
+/* ---- match ---- */
+.match-btn {
+  justify-self: start;
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+.match-btn:hover { background: #e6f2f0; }
+
+.match-dialog {
+  width: min(680px, calc(100vw - 24px));
+  max-height: calc(100vh - 48px);
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--surface);
+}
+.match-dialog::backdrop { background: rgba(27, 35, 48, 0.45); }
+.match-body { padding: 20px; display: grid; gap: 16px; }
+.match-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.match-head h2 { margin: 0; font-size: 1.125rem; }
+.match-body h3 { margin: 0 0 6px; font-size: 0.95rem; }
+
+.jd summary { cursor: pointer; font-weight: 600; margin-bottom: 8px; }
+.jd textarea { width: 100%; margin-bottom: 8px; }
+
+.run-row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+.run-row label { min-width: 220px; }
+
+.score-line { margin: 0 0 8px; }
+.score-line strong { font-size: 1.5rem; letter-spacing: -0.01em; }
+.meter { height: 8px; background: var(--rule); border-radius: 4px; overflow: hidden; }
+.meter span { display: block; height: 100%; background: var(--accent); }
+
+.reqs { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 12px; }
+.reqs li { display: grid; gap: 4px; padding-left: 12px; border-left: 3px solid var(--rule); }
+.reqs li.ok { border-left-color: var(--ok); }
+.reqs li.missing { border-left-color: var(--bad); }
+.req-name { font-weight: 600; }
+.reqs li.ok .req-name span[aria-hidden] { color: var(--ok); }
+.reqs li.missing .req-name span[aria-hidden] { color: var(--bad); }
+.evidence {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--muted);
+  background: var(--paper);
+  border-radius: 4px;
+  padding: 4px 8px;
+  quotes: none;
+}
+.note { margin: 16px 0 0; }
+
+.history { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.history .link[aria-current="true"] { font-weight: 700; text-decoration: none; color: var(--ink); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

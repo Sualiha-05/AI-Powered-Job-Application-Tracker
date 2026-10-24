@@ -121,3 +121,15 @@ def test_model_without_tool_output_is_502(client):
 def test_oversized_text_rejected(client):
     r = client.post("/extract", json={"text": "x" * 30_001, "method": "llm"})
     assert r.status_code == 422
+
+
+def test_client_timeout_and_retries_are_configurable(monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "k")
+    monkeypatch.setenv("LLM_TIMEOUT_SECONDS", "8")
+    monkeypatch.setenv("LLM_MAX_RETRIES", "0")
+    get_llm_client.cache_clear()
+    try:
+        c = get_llm_client()
+        assert c.max_retries == 0 and float(c.timeout) == 8.0
+    finally:
+        get_llm_client.cache_clear()

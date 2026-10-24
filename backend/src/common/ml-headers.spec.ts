@@ -1,4 +1,4 @@
-import { mlAuthHeaders } from './ml-headers';
+import { mlAuthHeaders, mlTimeoutMs } from './ml-headers';
 
 describe('mlAuthHeaders', () => {
   const original = process.env.ML_API_KEY;
@@ -15,5 +15,20 @@ describe('mlAuthHeaders', () => {
   it('adds nothing when it is not set', () => {
     delete process.env.ML_API_KEY;
     expect(mlAuthHeaders()).toEqual({});
+  });
+});
+
+describe('mlTimeoutMs', () => {
+  afterEach(() => delete process.env.ML_TIMEOUT_MS);
+
+  it('defaults to 25 s and accepts an override', () => {
+    expect(mlTimeoutMs()).toBe(25_000);
+    process.env.ML_TIMEOUT_MS = '8000';
+    expect(mlTimeoutMs()).toBe(8000);
+  });
+
+  it('ignores invalid values', () => {
+    process.env.ML_TIMEOUT_MS = 'abc';
+    expect(mlTimeoutMs()).toBe(25_000);
   });
 });

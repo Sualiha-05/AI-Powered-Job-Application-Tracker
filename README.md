@@ -32,7 +32,7 @@ docker compose up --build
 - API health: http://localhost:3001/health
 - ML service docs: http://localhost:8000/docs
 
-Deploying for free (Vercel + Render + Neon): see [DEPLOY.md](DEPLOY.md).
+Deploying for free, no card needed (three Vercel projects + Neon): see [DEPLOY.md](DEPLOY.md).
 
 ## Try the API
 
@@ -46,13 +46,18 @@ curl -X POST localhost:3001/applications -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{"company":"Acme","title":"Full Stack Engineer"}'
 
-# upload a resume (PDF or .txt, max 5 MB)
+# upload a resume (PDF or .txt, max 4 MB)
 curl -X POST localhost:3001/resumes -H "Authorization: Bearer <token>" -F "file=@resume.pdf"
 
 # match a stored resume against an application's job description
 curl -X POST localhost:3001/match/by-ids -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{"resumeId":"<resume id>","applicationId":"<application id>"}'
+
+# run a match and save it (history is kept per application)
+curl -X POST localhost:3001/applications/<application id>/matches -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" -d '{"resumeId":"<resume id>"}'
+curl localhost:3001/applications/<application id>/matches -H "Authorization: Bearer <token>"
 
 # or match raw text directly
 curl -X POST localhost:3001/match -H "Authorization: Bearer <token>" \
@@ -75,7 +80,7 @@ Without a key, `method=llm` returns 503 and everything else keeps working.
 ## Tests
 
 ```bash
-cd ml-service && pip install -r requirements.txt && pytest
+cd ml-service && pip install -r requirements-dev.txt && pytest
 cd backend && npm install && npm test
 cd frontend && npm install && npm run lint
 ```

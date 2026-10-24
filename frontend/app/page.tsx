@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import AddApplicationForm from './components/AddApplicationForm';
 import AuthForm from './components/AuthForm';
 import Board from './components/Board';
+import MatchDialog from './components/MatchDialog';
 import ResumePanel from './components/ResumePanel';
 import {
   API,
@@ -28,6 +29,7 @@ export default function Home() {
   const [authed, setAuthed] = useState<boolean | null>(null);
   const [apps, setApps] = useState<Application[]>([]);
   const [resumes, setResumes] = useState<Resume[]>([]);
+  const [matchId, setMatchId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [api, setApi] = useState<ApiState>('checking');
 
@@ -35,6 +37,7 @@ export default function Home() {
     clearToken();
     setApps([]);
     setResumes([]);
+    setMatchId(null);
     setAuthed(false);
   }, []);
 
@@ -99,6 +102,11 @@ export default function Home() {
     }
   }
 
+  async function saveJobDescription(id: string, jobDescription: string) {
+    const updated = await updateApplication(id, { jobDescription });
+    setApps((prev) => prev.map((a) => (a.id === id ? updated : a)));
+  }
+
   async function move(id: string, status: Status) {
     const before = apps;
     // Optimistic update, rolled back if the server rejects it.
@@ -125,6 +133,8 @@ export default function Home() {
 
   const statusLabel = { checking: 'Checking API…', up: 'API connected', down: 'API unreachable' }[api];
 
+  const matchApp = apps.find((a) => a.id === matchId) ?? null;
+
   if (authed === null) return <main className="shell" />;
 
   return (
@@ -147,7 +157,17 @@ export default function Home() {
         <>
           <ResumePanel resumes={resumes} onUpload={addResume} onDelete={removeResume} />
           <AddApplicationForm onCreate={add} />
-          <Board apps={apps} onMove={move} onDelete={remove} />
+          <Board apps={apps} onMove={move} onDelete={remove} onMatch={(a) => setMatchId(a.id)} />
+          {matchApp && (
+            <MatchDialog
+              key={matchApp.id}
+              app={matchApp}
+              resumes={resumes}
+              onClose={() => setMatchId(null)}
+              onSaveJobDescription={saveJobDescription}
+              onUnauthorized={signOut}
+            />
+          )}
         </>
       ) : (
         <AuthForm onAuthed={load} />

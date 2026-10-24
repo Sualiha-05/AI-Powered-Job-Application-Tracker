@@ -7,9 +7,10 @@ interface Props {
   apps: Application[];
   onMove: (id: string, status: Status) => void;
   onDelete: (id: string) => void;
+  onMatch: (app: Application) => void;
 }
 
-export default function Board({ apps, onMove, onDelete }: Props) {
+export default function Board({ apps, onMove, onDelete, onMatch }: Props) {
   const [over, setOver] = useState<Status | null>(null);
 
   function drop(e: DragEvent, status: Status) {
@@ -50,6 +51,10 @@ export default function Board({ apps, onMove, onDelete }: Props) {
               >
                 <strong>{a.title}</strong>
                 <span className="company">{a.company}</span>
+
+                <button type="button" className="match-btn" onClick={() => onMatch(a)}>
+                  Match resume
+                </button>
 
                 <div className="card-actions">
                   {/* Keyboard / touch alternative to drag and drop */}

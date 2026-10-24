@@ -82,7 +82,7 @@ export const listApplications = () => request<Application[]>('/applications');
 export const createApplication = (data: { company: string; title: string; jobDescription?: string }) =>
   request<Application>('/applications', { method: 'POST', body: JSON.stringify(data) });
 
-export const updateApplication = (id: string, data: Partial<Pick<Application, 'status' | 'company' | 'title' | 'notes'>>) =>
+export const updateApplication = (id: string, data: Partial<Pick<Application, 'status' | 'company' | 'title' | 'notes' | 'jobDescription'>>) =>
   request<Application>(`/applications/${id}`, { method: 'PATCH', body: JSON.stringify(data) });
 
 export const deleteApplication = (id: string) => request<{ deleted: boolean }>(`/applications/${id}`, { method: 'DELETE' });
@@ -95,7 +95,7 @@ export interface Resume {
   createdAt: string;
 }
 
-export const MAX_UPLOAD_MB = 5;
+export const MAX_UPLOAD_MB = 4;
 
 export const listResumes = () => request<Resume[]>('/resumes');
 
@@ -106,3 +106,33 @@ export const uploadResume = (file: File) => {
 };
 
 export const deleteResume = (id: string) => request<{ deleted: boolean }>(`/resumes/${id}`, { method: 'DELETE' });
+
+export interface Evidence {
+  line: string;
+  line_number: number;
+}
+
+export interface RequirementResult {
+  requirement: string;
+  supported: boolean;
+  evidence: Evidence[];
+}
+
+export interface MatchResult {
+  id: string;
+  applicationId: string;
+  resumeId: string | null;
+  resumeFilename: string;
+  matcher: string;
+  score: number;
+  result: { requirements: RequirementResult[]; missing: string[] };
+  createdAt: string;
+}
+
+export const runMatch = (applicationId: string, resumeId: string) =>
+  request<MatchResult>(`/applications/${applicationId}/matches`, {
+    method: 'POST',
+    body: JSON.stringify({ resumeId }),
+  });
+
+export const listMatches = (applicationId: string) => request<MatchResult[]>(`/applications/${applicationId}/matches`);
