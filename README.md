@@ -59,6 +59,14 @@ curl -X POST localhost:3001/applications/<application id>/matches -H "Authorizat
   -H "Content-Type: application/json" -d '{"resumeId":"<resume id>"}'
 curl localhost:3001/applications/<application id>/matches -H "Authorization: Bearer <token>"
 
+# same, using the free TF-IDF matcher
+curl -X POST localhost:3001/applications/<application id>/matches -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" -d '{"resumeId":"<resume id>","matcher":"tfidf"}'
+
+# same, using the AI matcher (needs GEMINI_API_KEY or ANTHROPIC_API_KEY on the ML service; limited per day)
+curl -X POST localhost:3001/applications/<application id>/matches -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" -d '{"resumeId":"<resume id>","matcher":"llm"}'
+
 # or match raw text directly
 curl -X POST localhost:3001/match -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
@@ -67,7 +75,7 @@ curl -X POST localhost:3001/match -H "Authorization: Bearer <token>" \
 
 ## LLM skill extraction (optional)
 
-Add your key to `.env` (`ANTHROPIC_API_KEY=...`), restart, then:
+Add one provider key to `.env` (`GEMINI_API_KEY=...` has a free tier; `ANTHROPIC_API_KEY=...` is paid), restart, then:
 
 ```bash
 curl -X POST localhost:8000/extract -H "Content-Type: application/json" \

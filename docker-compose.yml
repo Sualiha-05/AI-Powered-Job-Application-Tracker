@@ -23,8 +23,10 @@ services:
   ml-service:
     build: ./ml-service
     environment:
+      LLM_PROVIDER: ${LLM_PROVIDER:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
-      LLM_MODEL: ${LLM_MODEL:-claude-haiku-5-5}
+      LLM_MODEL: ${LLM_MODEL:-}
       ML_API_KEY: ${ML_API_KEY:-}
     ports:
       - "8000:8000"

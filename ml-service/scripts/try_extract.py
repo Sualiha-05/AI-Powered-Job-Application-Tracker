@@ -1,6 +1,6 @@
 """Compare the keyword and LLM extractors on a sample (or your own) job description.
 
-    export ANTHROPIC_API_KEY=...        # never commit this
+    export GEMINI_API_KEY=...           # or ANTHROPIC_API_KEY; never commit a key
     python scripts/try_extract.py                # built-in sample
     python scripts/try_extract.py my_jd.txt      # your own file
 """
@@ -22,7 +22,7 @@ print("Keyword baseline:", extract_skills(text))
 
 client = get_llm_client()
 if client is None:
-    sys.exit("\nNo ANTHROPIC_API_KEY set, skipping the LLM extractor.")
+    sys.exit("\nNo GEMINI_API_KEY or ANTHROPIC_API_KEY set, skipping the LLM extractor.")
 try:
     out = llm_extract(text, "job_description", client)
 except LLMUnavailable as err:

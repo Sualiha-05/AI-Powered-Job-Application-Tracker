@@ -28,6 +28,7 @@ class ExtractResponse(BaseModel):
 class MatchRequest(BaseModel):
     resume_text: str = Field(min_length=1)
     job_description: str = Field(min_length=1)
+    matcher: Literal["keyword", "tfidf", "llm"] = "keyword"
 
 
 class Evidence(BaseModel):
@@ -39,6 +40,9 @@ class RequirementResult(BaseModel):
     requirement: str
     supported: bool
     evidence: list[Evidence]
+    # Only set by the LLM matcher
+    importance: Literal["required", "preferred"] | None = None
+    note: str | None = Field(default=None, description="Short model-written reason; not verified")
 
 
 class MatchResponse(BaseModel):
@@ -46,6 +50,11 @@ class MatchResponse(BaseModel):
     score: float = Field(ge=0.0, le=1.0)
     requirements: list[RequirementResult]
     missing: list[str]
+    # Only set by the LLM matcher
+    ungrounded: int | None = Field(default=None, description="Claims removed because the cited resume line did not exist")
+    usage: dict | None = None
+    # Only set by the TF-IDF matcher: cosine similarity of the whole resume and whole job description (0 to 1)
+    doc_similarity: float | None = None
 
 
 class ParsePdfResponse(BaseModel):

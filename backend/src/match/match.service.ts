@@ -1,5 +1,11 @@
 import { HttpService } from '@nestjs/axios';
-import { BadGatewayException, BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadGatewayException,
+  BadRequestException,
+  Injectable,
+  ServiceUnavailableException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { mlAuthHeaders, mlTimeoutMs } from '../common/ml-headers';
 import { ApplicationsService } from '../applications/applications.service';
@@ -22,12 +28,21 @@ export class MatchService {
       const res = await firstValueFrom(
         this.http.post(
           `${this.baseUrl}/match`,
-          { resume_text: dto.resumeText, job_description: dto.jobDescription },
+          { resume_text: dto.resumeText, job_description: dto.jobDescription, matcher: dto.matcher ?? 'keyword' },
           { headers: mlAuthHeaders(), timeout: mlTimeoutMs() },
         ),
       );
       return res.data;
-    } catch {
+    } catch (err: any) {
+      const status = err?.response?.status;
+      const detail = err?.response?.data?.detail;
+      // 503 from the ML service means the LLM key is not configured there. Do not leak setup details.
+      if (status === 503) throw new ServiceUnavailableException('The AI matcher is not available on this server');
+      if (status === 422 && typeof detail === 'string') throw new UnprocessableEntityException(detail);
+      // The ML service describes provider failures safely, e.g. "LLM request failed (ClientError 429)" for a quota error.
+      if (status === 502 && typeof detail === 'string' && detail.startsWith('LLM request failed')) {
+        throw new BadGatewayException(`The AI provider returned an error: ${detail.replace('LLM request failed ', '')}`);
+      }
       throw new BadGatewayException('ML service unavailable');
     }
   }

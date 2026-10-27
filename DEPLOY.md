@@ -58,8 +58,14 @@ settings empty: Vercel detects FastAPI, and `pyproject.toml` tells it where the 
 | Environment variable | Value |
 |---|---|
 | `ML_API_KEY` | the second random value |
-| `ANTHROPIC_API_KEY` | optional; leave out to keep the LLM extractor off |
-| `LLM_MODEL` | optional, default `claude-haiku-5-5` |
+| `GEMINI_API_KEY` | optional: Google AI Studio key (free tier; read "Using the free Gemini tier" below first) |
+| `ANTHROPIC_API_KEY` | optional alternative (paid). Set only one provider's key |
+| `LLM_PROVIDER` | optional: `gemini` or `anthropic`; with a single key it is chosen automatically |
+| `LLM_MODEL` | optional; leave empty for the default (`gemini-3.5-flash-lite` or `claude-haiku-5-5`). Must match the provider |
+
+The AI matcher and the LLM extractor work only if a provider key is set on this project. Without it, the Match dialog's
+"AI" option shows "not available" and everything else keeps working.
+| `TFIDF_THRESHOLD` | optional, default `0.6` (see `docs/ARCHITECTURE.md`) |
 | `LLM_TIMEOUT_SECONDS`, `LLM_MAX_RETRIES` | `8` and `0` if your plan's function limit turns out to be 10 s |
 
 Open `<ml-url>/health`. It should return `{"status":"ok","service":"ml-service"}`.
@@ -77,6 +83,8 @@ Import the same repo again, **Root Directory** `backend`. Vercel detects NestJS 
 | `ML_API_KEY` | exactly the same value as on the ML project |
 | `ML_TIMEOUT_MS` | optional; `8000` if your function limit is 10 s (default 25000) |
 | `FRONTEND_URL` | set in step 5 |
+| `LLM_MATCH_DAILY_LIMIT` | optional, AI matches per user per 24 h (default 10) |
+| `LLM_MATCH_GLOBAL_DAILY_LIMIT` | optional, AI matches overall per 24 h (default 100) |
 
 Open `<backend-url>/health`.
 
@@ -117,8 +125,25 @@ origins with commas), then redeploy the backend.
 ## Protecting your wallet
 
 - The ML project is publicly reachable. `ML_API_KEY` stops strangers calling it. Never leave it unset in production.
-- Set a monthly spend limit on your Anthropic key. LLM extraction is the only part that can cost money.
-- The frontend never uses `method=llm`, so the public demo spends nothing unless you add that.
+- If your key is paid (Anthropic, or a Gemini project with billing), set a monthly spend limit. The AI matcher and LLM extraction are the only parts that can cost money.
+- Each AI match sends the job description and resume to the model. The backend caps them (10 per user and 100 overall per 24 hours by
+  default); lower `LLM_MATCH_GLOBAL_DAILY_LIMIT` if you want a tighter ceiling. Check your provider's pricing page for the current price of your model.
+- The Match dialog offers an AI option. To keep a public demo completely free, leave every provider key unset on the ML project: the AI option then says it is not available and nothing is spent.
+
+## Using the free Gemini tier
+
+A Google AI Studio key (`GEMINI_API_KEY`) works without a card, but know the trade-offs before other people use your AI option:
+
+- **Privacy.** On the free tier, Google's terms allow it to use your inputs and outputs to improve its products, and human
+  reviewers may read them; paid usage is not used that way. A resume is personal data. Use the AI option only with your own
+  or made-up resumes, or leave it switched off (no key) for public visitors. The dialog already says the texts go to an AI provider.
+- **Quota.** Free-tier limits are shown per project in the AI Studio rate-limit console and are not published as fixed
+  numbers. Third-party guides report roughly 20 requests per day for the larger Flash models and about 500 for Flash-Lite
+  models; check yours. When the quota runs out the Match dialog shows "The AI provider returned an error: (ClientError 429)".
+  Set `LLM_MATCH_GLOBAL_DAILY_LIMIT` below your real quota so users get a clear message from the app instead.
+- **Models change.** The default `gemini-3.5-flash-lite` was on the free list when this was written. If Google retires it,
+  set `LLM_MODEL` to a current free model from the AI Studio model list.
+- Set `LLM_PROVIDER=gemini` explicitly if a stray `ANTHROPIC_API_KEY` is also present.
 
 ## Troubleshooting
 
@@ -126,6 +151,7 @@ origins with commas), then redeploy the backend.
 |---|---|
 | Browser "CORS" error | `FRONTEND_URL` does not exactly match the frontend URL; fix it and redeploy the backend |
 | `500` on register or match | Tables missing or out of date: repeat the create-tables step in section 1 |
+| "The AI provider returned an error: (ClientError 429)" | Free quota used up: wait, lower the app's daily limits, or use another model |
 | `502` on resume upload or match | `ML_API_KEY` differs between projects, the ML project is waking up, or `ML_TIMEOUT_MS` is too low; check the ML project's logs |
 | `FUNCTION_INVOCATION_TIMEOUT` | The plan's time limit was hit: use the short-timeout variables and retry |
 | `413` on upload | File is over 4 MB |

@@ -15,7 +15,7 @@ export class MatchResultsController {
     @Param('applicationId', ParseUUIDPipe) applicationId: string,
     @Body() dto: RunMatchDto,
   ) {
-    return this.service.run(user.userId, applicationId, dto.resumeId);
+    return this.service.run(user.userId, applicationId, dto.resumeId, dto.matcher);
   }
 
   @Get()

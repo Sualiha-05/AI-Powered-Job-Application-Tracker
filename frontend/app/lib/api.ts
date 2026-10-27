@@ -112,10 +112,14 @@ export interface Evidence {
   line_number: number;
 }
 
+export type MatcherChoice = 'keyword' | 'tfidf' | 'llm';
+
 export interface RequirementResult {
   requirement: string;
   supported: boolean;
   evidence: Evidence[];
+  importance?: 'required' | 'preferred' | null; // TF-IDF and AI matchers
+  note?: string | null; // TF-IDF: how it matched. AI: written by the model, not verified
 }
 
 export interface MatchResult {
@@ -125,14 +129,18 @@ export interface MatchResult {
   resumeFilename: string;
   matcher: string;
   score: number;
-  result: { requirements: RequirementResult[]; missing: string[] };
+  result: {
+    requirements: RequirementResult[];
+    missing: string[];
+    meta?: { ungrounded?: number | null; usage?: Record<string, number> | null; docSimilarity?: number | null };
+  };
   createdAt: string;
 }
 
-export const runMatch = (applicationId: string, resumeId: string) =>
+export const runMatch = (applicationId: string, resumeId: string, matcher: MatcherChoice = 'keyword') =>
   request<MatchResult>(`/applications/${applicationId}/matches`, {
     method: 'POST',
-    body: JSON.stringify({ resumeId }),
+    body: JSON.stringify({ resumeId, matcher }),
   });
 
 export const listMatches = (applicationId: string) => request<MatchResult[]>(`/applications/${applicationId}/matches`);

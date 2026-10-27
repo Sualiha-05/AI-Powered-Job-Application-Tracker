@@ -1,4 +1,4 @@
-import { BadRequestException, UnprocessableEntityException } from '@nestjs/common';
+import { BadGatewayException, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
 import { of, throwError } from 'rxjs';
 import { ResumesService } from './resumes.service';
 
@@ -58,5 +58,23 @@ describe('ResumesService', () => {
     } finally {
       delete process.env.ML_API_KEY;
     }
+  });
+
+  // Covers the "invalid response" guard in parsePdf: a wrong ML_SERVICE_URL can return a web page instead of JSON.
+  it.each([
+    ['an HTML page', '<html>not json</html>'],
+    ['JSON without text', {}],
+    ['JSON with a non-string text', { text: null }],
+  ])('answers 502 (not a crash) when the PDF service returns %s', async (_label, data) => {
+    const post = jest.fn(() => of({ data }));
+    const { service, repo } = setup({ post });
+    await expect(service.createFromUpload('u1', file('r.pdf', 'application/pdf', '%PDF-1.4'))).rejects.toBeInstanceOf(BadGatewayException);
+    expect(repo.save).not.toHaveBeenCalled();
+  });
+
+  it('answers 502 when the PDF service is unreachable', async () => {
+    const post = jest.fn(() => throwError(() => new Error('ECONNREFUSED')));
+    const { service } = setup({ post });
+    await expect(service.createFromUpload('u1', file('r.pdf', 'application/pdf', '%PDF-1.4'))).rejects.toBeInstanceOf(BadGatewayException);
   });
 });

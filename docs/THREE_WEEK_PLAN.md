@@ -8,7 +8,8 @@
 - [ ] Skeleton deployed at a public URL (code is ready for three Vercel projects + Neon; follow DEPLOY.md)
 
 ## Week 2: matching with evidence
-- [ ] Embeddings + LLM matcher returning the same `MatchResponse`
+- [x] LLM matcher returning the same `MatchResponse` (grounded evidence, per-user and global daily limits)
+- [x] TF-IDF matcher as the lightweight middle option (pure Python; embedding models are too big for the 250 MB function limit)
 - [x] Matching saved as a result row in Postgres (runs inside the request; Vercel functions cannot keep a worker alive, so no BullMQ/Redis and no pending state)
 - [x] Match dialog with evidence in the UI (keyword baseline for now)
 

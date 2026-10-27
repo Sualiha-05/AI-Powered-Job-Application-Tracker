@@ -11,6 +11,8 @@ export interface MatchRequirement {
   requirement: string;
   supported: boolean;
   evidence: MatchEvidence[];
+  importance?: 'required' | 'preferred' | null; // LLM matcher only
+  note?: string | null; // LLM matcher only; model-written, not verified
 }
 
 @Entity('match_results')
@@ -50,7 +52,11 @@ export class MatchResult {
   score: number;
 
   @Column({ type: 'jsonb' })
-  result: { requirements: MatchRequirement[]; missing: string[] };
+  result: {
+    requirements: MatchRequirement[];
+    missing: string[];
+    meta?: { ungrounded?: number | null; usage?: Record<string, number> | null; docSimilarity?: number | null };
+  };
 
   @CreateDateColumn()
   createdAt: Date;
