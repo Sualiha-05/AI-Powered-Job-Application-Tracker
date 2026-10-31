@@ -1,0 +1,8 @@
+Taylor Brooks
+Software Engineer
+
+Wrote JSON endpoints over HTTP for a mobile app, documented with OpenAPI
+Modelled relational data in Postgres and tuned slow queries
+Packaged applications as container images and ran them on Docker Compose
+Set up automated build, test and release pipelines that run on every commit
+Wrote browser tests that click through the app and check the screens

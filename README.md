@@ -85,6 +85,11 @@ curl -X POST localhost:8000/extract -H "Content-Type: application/json" \
 Or compare both extractors from a terminal: `cd ml-service && python scripts/try_extract.py [file.txt]`.
 Without a key, `method=llm` returns 503 and everything else keeps working.
 
+## Evaluation
+
+`evaluation/` measures the matchers against labels you write and runs a name-swap bias audit. See [evaluation/README.md](evaluation/README.md).
+Try it on the synthetic example: `python evaluation/run_eval.py --data evaluation/data/example --split all`.
+
 ## Tests
 
 ```bash

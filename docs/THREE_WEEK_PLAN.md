@@ -14,11 +14,13 @@
 - [x] Match dialog with evidence in the UI (keyword baseline for now)
 
 ## Week 3: evaluation, polish, launch
-- [ ] Labeled set + metrics for each matcher
-- [ ] Name-swap bias audit
+- [x] Evaluation harness built: `evaluation/` (labeling tool, scoring, bias audit; see `evaluation/README.md`)
+- [ ] Write about 10 real postings and 4 to 5 made-up resume variants each; label them blind; commit `labels.json`
+- [ ] Tune the TF-IDF threshold on `dev`, then report `test` once (keyword, TF-IDF, AI with 3 repeats)
+- [ ] Name-swap bias audit (replace the illustrative name list with a validated one)
 - [ ] CI, tests on critical paths, final deploy
 - [ ] README (diagram, related work, results, what failed), demo video, 3-5 users
 
 ## If behind, cut in this order
-Dashboard counts -> bias audit scope -> embeddings matcher.
+Dashboard counts -> bias audit scope -> number of AI repeats.
 Never cut: live deployment, evidence-based match view, evaluation table.

@@ -1,0 +1,7 @@
+Full Stack Developer
+What you'll need:
+- React and TypeScript
+- Node.js
+- REST APIs
+- PostgreSQL or MySQL
+Bonus points: GraphQL, Docker

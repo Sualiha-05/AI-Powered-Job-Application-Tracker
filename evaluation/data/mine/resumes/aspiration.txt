@@ -1,0 +1,8 @@
+Morgan Lee
+QA Analyst
+
+Executed manual regression test plans for a banking web app
+Wrote test cases in TestRail and reported defects in Jira
+Currently learning Selenium and Python for test automation
+Curious about learning Kubernetes and Terraform
+Completed an introductory course on CI/CD concepts

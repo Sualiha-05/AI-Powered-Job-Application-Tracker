@@ -1,0 +1,9 @@
+{
+  "_comment": "ILLUSTRATIVE name lists for the name-swap audit, written from the general pattern of audit studies; they are NOT copied from a published list. Group labels describe how names are commonly perceived, not any person. For a publishable audit replace them with a validated list from the literature (for example the 80 names used by Wilson and Caliskan, 2024) and use many more names.",
+  "groups": {
+    "white_female": ["Emily Walsh", "Anne Baker", "Kristen Murphy", "Meredith Sullivan", "Laurie Kelly", "Allison Ryan"],
+    "white_male": ["Greg Baker", "Todd Sullivan", "Brendan Kelly", "Matthew Walsh", "Neil Murphy", "Geoffrey Ryan"],
+    "black_female": ["Lakisha Washington", "Tamika Jackson", "Latoya Williams", "Keisha Robinson", "Aisha Brooks", "Ebony Jones"],
+    "black_male": ["Jamal Washington", "Darnell Jackson", "Tyrone Williams", "Rasheed Robinson", "Kareem Brooks", "Jermaine Jones"]
+  }
+}

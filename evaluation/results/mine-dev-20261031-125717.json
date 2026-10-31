@@ -1,0 +1,755 @@
+{
+  "split": "dev",
+  "n_postings": 1,
+  "n_resumes": 4,
+  "n_pairs": 4,
+  "n_gold_requirements": 28,
+  "labels_hash": "9ddbd87c2abc",
+  "dataset": "evaluation\\data\\mine",
+  "tfidf_thresholds": [
+    0.4,
+    0.5,
+    0.6,
+    0.7
+  ],
+  "llm_model": null,
+  "llm_runs": 0,
+  "runs": [
+    {
+      "label": "keyword",
+      "matcher": "keyword",
+      "run": 1,
+      "n_pairs": 4,
+      "n_pairs_failed": 0,
+      "incomplete": false,
+      "n_requirements": 28,
+      "coverage": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 5,
+      "tn": 16,
+      "precision": 1.0,
+      "recall": 0.5833333333333334,
+      "f1": 0.7368421052631579,
+      "accuracy": 0.8214285714285714,
+      "f1_ci": [
+        0.5,
+        1.0
+      ],
+      "spearman_overall": 0.6324555320336759,
+      "spearman_per_posting_mean": 0.6324555320336759,
+      "n_postings_ranked": 1,
+      "evidence_hit_rate": 0.8571428571428571,
+      "evidence_n": 7,
+      "per_tag": {
+        "aspiration": {
+          "n": 7,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 1.0
+        },
+        "strong": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571,
+          "accuracy": 0.8571428571428571
+        },
+        "synonyms": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "accuracy": 0.42857142857142855
+        },
+        "weak": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "ungrounded": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "mismatches": [
+        {
+          "posting": "fullstack-react",
+          "resume": "strong-backend",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "React development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "React"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "TypeScript development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "TypeScript"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "REST API development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST APIs"
+          ]
+        }
+      ],
+      "decision_map": {
+        "fullstack-react|aspiration|react-development": false,
+        "fullstack-react|aspiration|typescript-development": false,
+        "fullstack-react|aspiration|node-js-development": false,
+        "fullstack-react|aspiration|rest-api-development": false,
+        "fullstack-react|aspiration|relational-database": false,
+        "fullstack-react|aspiration|graphql": false,
+        "fullstack-react|aspiration|docker-containerization": false,
+        "fullstack-react|strong-backend|react-development": false,
+        "fullstack-react|strong-backend|typescript-development": false,
+        "fullstack-react|strong-backend|node-js-development": false,
+        "fullstack-react|strong-backend|rest-api-development": true,
+        "fullstack-react|strong-backend|relational-database": true,
+        "fullstack-react|strong-backend|graphql": false,
+        "fullstack-react|strong-backend|docker-containerization": true,
+        "fullstack-react|synonyms|react-development": false,
+        "fullstack-react|synonyms|typescript-development": false,
+        "fullstack-react|synonyms|node-js-development": false,
+        "fullstack-react|synonyms|rest-api-development": false,
+        "fullstack-react|synonyms|relational-database": true,
+        "fullstack-react|synonyms|graphql": false,
+        "fullstack-react|synonyms|docker-containerization": true,
+        "fullstack-react|weak-frontend|react-development": true,
+        "fullstack-react|weak-frontend|typescript-development": true,
+        "fullstack-react|weak-frontend|node-js-development": false,
+        "fullstack-react|weak-frontend|rest-api-development": false,
+        "fullstack-react|weak-frontend|relational-database": false,
+        "fullstack-react|weak-frontend|graphql": false,
+        "fullstack-react|weak-frontend|docker-containerization": false
+      }
+    },
+    {
+      "label": "tfidf@0.4",
+      "matcher": "tfidf",
+      "run": 1,
+      "n_pairs": 4,
+      "n_pairs_failed": 0,
+      "incomplete": false,
+      "n_requirements": 28,
+      "coverage": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 5,
+      "tn": 16,
+      "precision": 1.0,
+      "recall": 0.5833333333333334,
+      "f1": 0.7368421052631579,
+      "accuracy": 0.8214285714285714,
+      "f1_ci": [
+        0.5,
+        1.0
+      ],
+      "spearman_overall": 0.6324555320336759,
+      "spearman_per_posting_mean": 0.6324555320336759,
+      "n_postings_ranked": 1,
+      "evidence_hit_rate": 0.8571428571428571,
+      "evidence_n": 7,
+      "per_tag": {
+        "aspiration": {
+          "n": 7,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 1.0
+        },
+        "strong": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571,
+          "accuracy": 0.8571428571428571
+        },
+        "synonyms": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "accuracy": 0.42857142857142855
+        },
+        "weak": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "ungrounded": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "mismatches": [
+        {
+          "posting": "fullstack-react",
+          "resume": "strong-backend",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "React development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "React"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "TypeScript development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "TypeScript"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "REST API development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST APIs"
+          ]
+        }
+      ],
+      "decision_map": {
+        "fullstack-react|aspiration|react-development": false,
+        "fullstack-react|aspiration|typescript-development": false,
+        "fullstack-react|aspiration|node-js-development": false,
+        "fullstack-react|aspiration|rest-api-development": false,
+        "fullstack-react|aspiration|relational-database": false,
+        "fullstack-react|aspiration|graphql": false,
+        "fullstack-react|aspiration|docker-containerization": false,
+        "fullstack-react|strong-backend|react-development": false,
+        "fullstack-react|strong-backend|typescript-development": false,
+        "fullstack-react|strong-backend|node-js-development": false,
+        "fullstack-react|strong-backend|rest-api-development": true,
+        "fullstack-react|strong-backend|relational-database": true,
+        "fullstack-react|strong-backend|graphql": false,
+        "fullstack-react|strong-backend|docker-containerization": true,
+        "fullstack-react|synonyms|react-development": false,
+        "fullstack-react|synonyms|typescript-development": false,
+        "fullstack-react|synonyms|node-js-development": false,
+        "fullstack-react|synonyms|rest-api-development": false,
+        "fullstack-react|synonyms|relational-database": true,
+        "fullstack-react|synonyms|graphql": false,
+        "fullstack-react|synonyms|docker-containerization": true,
+        "fullstack-react|weak-frontend|react-development": true,
+        "fullstack-react|weak-frontend|typescript-development": true,
+        "fullstack-react|weak-frontend|node-js-development": false,
+        "fullstack-react|weak-frontend|rest-api-development": false,
+        "fullstack-react|weak-frontend|relational-database": false,
+        "fullstack-react|weak-frontend|graphql": false,
+        "fullstack-react|weak-frontend|docker-containerization": false
+      }
+    },
+    {
+      "label": "tfidf@0.5",
+      "matcher": "tfidf",
+      "run": 1,
+      "n_pairs": 4,
+      "n_pairs_failed": 0,
+      "incomplete": false,
+      "n_requirements": 28,
+      "coverage": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 5,
+      "tn": 16,
+      "precision": 1.0,
+      "recall": 0.5833333333333334,
+      "f1": 0.7368421052631579,
+      "accuracy": 0.8214285714285714,
+      "f1_ci": [
+        0.5,
+        1.0
+      ],
+      "spearman_overall": 0.6324555320336759,
+      "spearman_per_posting_mean": 0.6324555320336759,
+      "n_postings_ranked": 1,
+      "evidence_hit_rate": 0.8571428571428571,
+      "evidence_n": 7,
+      "per_tag": {
+        "aspiration": {
+          "n": 7,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 1.0
+        },
+        "strong": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571,
+          "accuracy": 0.8571428571428571
+        },
+        "synonyms": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "accuracy": 0.42857142857142855
+        },
+        "weak": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "ungrounded": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "mismatches": [
+        {
+          "posting": "fullstack-react",
+          "resume": "strong-backend",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "React development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "React"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "TypeScript development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "TypeScript"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "REST API development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST APIs"
+          ]
+        }
+      ],
+      "decision_map": {
+        "fullstack-react|aspiration|react-development": false,
+        "fullstack-react|aspiration|typescript-development": false,
+        "fullstack-react|aspiration|node-js-development": false,
+        "fullstack-react|aspiration|rest-api-development": false,
+        "fullstack-react|aspiration|relational-database": false,
+        "fullstack-react|aspiration|graphql": false,
+        "fullstack-react|aspiration|docker-containerization": false,
+        "fullstack-react|strong-backend|react-development": false,
+        "fullstack-react|strong-backend|typescript-development": false,
+        "fullstack-react|strong-backend|node-js-development": false,
+        "fullstack-react|strong-backend|rest-api-development": true,
+        "fullstack-react|strong-backend|relational-database": true,
+        "fullstack-react|strong-backend|graphql": false,
+        "fullstack-react|strong-backend|docker-containerization": true,
+        "fullstack-react|synonyms|react-development": false,
+        "fullstack-react|synonyms|typescript-development": false,
+        "fullstack-react|synonyms|node-js-development": false,
+        "fullstack-react|synonyms|rest-api-development": false,
+        "fullstack-react|synonyms|relational-database": true,
+        "fullstack-react|synonyms|graphql": false,
+        "fullstack-react|synonyms|docker-containerization": true,
+        "fullstack-react|weak-frontend|react-development": true,
+        "fullstack-react|weak-frontend|typescript-development": true,
+        "fullstack-react|weak-frontend|node-js-development": false,
+        "fullstack-react|weak-frontend|rest-api-development": false,
+        "fullstack-react|weak-frontend|relational-database": false,
+        "fullstack-react|weak-frontend|graphql": false,
+        "fullstack-react|weak-frontend|docker-containerization": false
+      }
+    },
+    {
+      "label": "tfidf@0.6",
+      "matcher": "tfidf",
+      "run": 1,
+      "n_pairs": 4,
+      "n_pairs_failed": 0,
+      "incomplete": false,
+      "n_requirements": 28,
+      "coverage": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 5,
+      "tn": 16,
+      "precision": 1.0,
+      "recall": 0.5833333333333334,
+      "f1": 0.7368421052631579,
+      "accuracy": 0.8214285714285714,
+      "f1_ci": [
+        0.5,
+        1.0
+      ],
+      "spearman_overall": 0.6324555320336759,
+      "spearman_per_posting_mean": 0.6324555320336759,
+      "n_postings_ranked": 1,
+      "evidence_hit_rate": 0.8571428571428571,
+      "evidence_n": 7,
+      "per_tag": {
+        "aspiration": {
+          "n": 7,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 1.0
+        },
+        "strong": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571,
+          "accuracy": 0.8571428571428571
+        },
+        "synonyms": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "accuracy": 0.42857142857142855
+        },
+        "weak": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "ungrounded": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "mismatches": [
+        {
+          "posting": "fullstack-react",
+          "resume": "strong-backend",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "React development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "React"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "TypeScript development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "TypeScript"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "REST API development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST APIs"
+          ]
+        }
+      ],
+      "decision_map": {
+        "fullstack-react|aspiration|react-development": false,
+        "fullstack-react|aspiration|typescript-development": false,
+        "fullstack-react|aspiration|node-js-development": false,
+        "fullstack-react|aspiration|rest-api-development": false,
+        "fullstack-react|aspiration|relational-database": false,
+        "fullstack-react|aspiration|graphql": false,
+        "fullstack-react|aspiration|docker-containerization": false,
+        "fullstack-react|strong-backend|react-development": false,
+        "fullstack-react|strong-backend|typescript-development": false,
+        "fullstack-react|strong-backend|node-js-development": false,
+        "fullstack-react|strong-backend|rest-api-development": true,
+        "fullstack-react|strong-backend|relational-database": true,
+        "fullstack-react|strong-backend|graphql": false,
+        "fullstack-react|strong-backend|docker-containerization": true,
+        "fullstack-react|synonyms|react-development": false,
+        "fullstack-react|synonyms|typescript-development": false,
+        "fullstack-react|synonyms|node-js-development": false,
+        "fullstack-react|synonyms|rest-api-development": false,
+        "fullstack-react|synonyms|relational-database": true,
+        "fullstack-react|synonyms|graphql": false,
+        "fullstack-react|synonyms|docker-containerization": true,
+        "fullstack-react|weak-frontend|react-development": true,
+        "fullstack-react|weak-frontend|typescript-development": true,
+        "fullstack-react|weak-frontend|node-js-development": false,
+        "fullstack-react|weak-frontend|rest-api-development": false,
+        "fullstack-react|weak-frontend|relational-database": false,
+        "fullstack-react|weak-frontend|graphql": false,
+        "fullstack-react|weak-frontend|docker-containerization": false
+      }
+    },
+    {
+      "label": "tfidf@0.7",
+      "matcher": "tfidf",
+      "run": 1,
+      "n_pairs": 4,
+      "n_pairs_failed": 0,
+      "incomplete": false,
+      "n_requirements": 28,
+      "coverage": 1.0,
+      "tp": 7,
+      "fp": 0,
+      "fn": 5,
+      "tn": 16,
+      "precision": 1.0,
+      "recall": 0.5833333333333334,
+      "f1": 0.7368421052631579,
+      "accuracy": 0.8214285714285714,
+      "f1_ci": [
+        0.5,
+        1.0
+      ],
+      "spearman_overall": 0.6324555320336759,
+      "spearman_per_posting_mean": 0.6324555320336759,
+      "n_postings_ranked": 1,
+      "evidence_hit_rate": 0.8571428571428571,
+      "evidence_n": 7,
+      "per_tag": {
+        "aspiration": {
+          "n": 7,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 1.0
+        },
+        "strong": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571,
+          "accuracy": 0.8571428571428571
+        },
+        "synonyms": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "accuracy": 0.42857142857142855
+        },
+        "weak": {
+          "n": 7,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "ungrounded": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "mismatches": [
+        {
+          "posting": "fullstack-react",
+          "resume": "strong-backend",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "React development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "React"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "TypeScript development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "TypeScript"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "Node.js development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Node.js"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "REST API development",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST APIs"
+          ]
+        }
+      ],
+      "decision_map": {
+        "fullstack-react|aspiration|react-development": false,
+        "fullstack-react|aspiration|typescript-development": false,
+        "fullstack-react|aspiration|node-js-development": false,
+        "fullstack-react|aspiration|rest-api-development": false,
+        "fullstack-react|aspiration|relational-database": false,
+        "fullstack-react|aspiration|graphql": false,
+        "fullstack-react|aspiration|docker-containerization": false,
+        "fullstack-react|strong-backend|react-development": false,
+        "fullstack-react|strong-backend|typescript-development": false,
+        "fullstack-react|strong-backend|node-js-development": false,
+        "fullstack-react|strong-backend|rest-api-development": true,
+        "fullstack-react|strong-backend|relational-database": true,
+        "fullstack-react|strong-backend|graphql": false,
+        "fullstack-react|strong-backend|docker-containerization": true,
+        "fullstack-react|synonyms|react-development": false,
+        "fullstack-react|synonyms|typescript-development": false,
+        "fullstack-react|synonyms|node-js-development": false,
+        "fullstack-react|synonyms|rest-api-development": false,
+        "fullstack-react|synonyms|relational-database": true,
+        "fullstack-react|synonyms|graphql": false,
+        "fullstack-react|synonyms|docker-containerization": true,
+        "fullstack-react|weak-frontend|react-development": true,
+        "fullstack-react|weak-frontend|typescript-development": true,
+        "fullstack-react|weak-frontend|node-js-development": false,
+        "fullstack-react|weak-frontend|rest-api-development": false,
+        "fullstack-react|weak-frontend|relational-database": false,
+        "fullstack-react|weak-frontend|graphql": false,
+        "fullstack-react|weak-frontend|docker-containerization": false
+      }
+    }
+  ],
+  "llm_aggregate": null
+}

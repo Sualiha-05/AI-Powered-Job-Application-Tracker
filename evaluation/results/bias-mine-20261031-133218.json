@@ -1,0 +1,164 @@
+{
+  "audits": [
+    {
+      "matcher": "keyword",
+      "n_pairs": 8,
+      "names_per_group": 3,
+      "repeats": 2,
+      "errors": 0,
+      "noise_flip_rate": 0.0,
+      "name_flip_rate": 0.0,
+      "excess_flip_rate": 0.0,
+      "variants_with_any_flip": 0,
+      "n_variants": 96,
+      "group_mean_scores": {
+        "white_female": 0.29675,
+        "white_male": 0.29675,
+        "black_female": 0.29675,
+        "black_male": 0.29675
+      },
+      "group_gaps": [
+        {
+          "a": "white_female",
+          "b": "white_male",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "white_female",
+          "b": "black_female",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "white_female",
+          "b": "black_male",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "white_male",
+          "b": "black_female",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "white_male",
+          "b": "black_male",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "black_female",
+          "b": "black_male",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        }
+      ],
+      "examples": []
+    },
+    {
+      "matcher": "tfidf@0.6",
+      "n_pairs": 8,
+      "names_per_group": 3,
+      "repeats": 2,
+      "errors": 0,
+      "noise_flip_rate": 0.0,
+      "name_flip_rate": 0.0,
+      "excess_flip_rate": 0.0,
+      "variants_with_any_flip": 0,
+      "n_variants": 96,
+      "group_mean_scores": {
+        "white_female": 0.25225000000000003,
+        "white_male": 0.25225000000000003,
+        "black_female": 0.25225000000000003,
+        "black_male": 0.25225000000000003
+      },
+      "group_gaps": [
+        {
+          "a": "white_female",
+          "b": "white_male",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "white_female",
+          "b": "black_female",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "white_female",
+          "b": "black_male",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "white_male",
+          "b": "black_female",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "white_male",
+          "b": "black_male",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        },
+        {
+          "a": "black_female",
+          "b": "black_male",
+          "mean_gap": 0.0,
+          "max_abs_gap": 0.0,
+          "n_pairs": 8
+        }
+      ],
+      "examples": []
+    }
+  ],
+  "names": {
+    "white_female": [
+      "Emily Walsh",
+      "Anne Baker",
+      "Kristen Murphy",
+      "Meredith Sullivan",
+      "Laurie Kelly",
+      "Allison Ryan"
+    ],
+    "white_male": [
+      "Greg Baker",
+      "Todd Sullivan",
+      "Brendan Kelly",
+      "Matthew Walsh",
+      "Neil Murphy",
+      "Geoffrey Ryan"
+    ],
+    "black_female": [
+      "Lakisha Washington",
+      "Tamika Jackson",
+      "Latoya Williams",
+      "Keisha Robinson",
+      "Aisha Brooks",
+      "Ebony Jones"
+    ],
+    "black_male": [
+      "Jamal Washington",
+      "Darnell Jackson",
+      "Tyrone Williams",
+      "Rasheed Robinson",
+      "Kareem Brooks",
+      "Jermaine Jones"
+    ]
+  }
+}

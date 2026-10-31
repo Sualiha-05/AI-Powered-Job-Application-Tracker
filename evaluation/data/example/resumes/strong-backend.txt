@@ -1,0 +1,8 @@
+Jordan Avery
+Backend Engineer
+
+Built REST APIs in Python with FastAPI serving two million requests a day
+Designed PostgreSQL schemas and wrote migrations
+Containerised services with Docker and deployed them with GitHub Actions
+Automated cloud infrastructure with Terraform
+Wrote unit and integration tests with pytest

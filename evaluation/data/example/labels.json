@@ -1,0 +1,389 @@
+{
+  "_comment": "SYNTHETIC EXAMPLE for trying the tools. Made-up people and postings; results on it prove nothing. Build your own dataset with label.py.",
+  "version": 1,
+  "postings": {
+    "backend-api": {
+      "split": "test",
+      "requirements": [
+        {
+          "id": "python",
+          "label": "Python",
+          "aliases": [
+            "python"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "fastapi",
+          "label": "FastAPI",
+          "aliases": [
+            "fastapi"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "postgresql",
+          "label": "PostgreSQL",
+          "aliases": [
+            "postgres"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "docker",
+          "label": "Docker",
+          "aliases": [
+            "docker",
+            "container"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "rest-api",
+          "label": "REST API design",
+          "aliases": [
+            "rest",
+            "api"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "kubernetes",
+          "label": "Kubernetes",
+          "aliases": [
+            "kubernetes",
+            "k8s"
+          ],
+          "importance": "preferred"
+        },
+        {
+          "id": "terraform",
+          "label": "Terraform",
+          "aliases": [
+            "terraform"
+          ],
+          "importance": "preferred"
+        }
+      ]
+    },
+    "qa-automation": {
+      "split": "dev",
+      "requirements": [
+        {
+          "id": "browser-automation",
+          "label": "Browser test automation",
+          "aliases": [
+            "selenium",
+            "browser"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "python",
+          "label": "Python scripting",
+          "aliases": [
+            "python"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "cicd",
+          "label": "CI/CD pipelines",
+          "aliases": [
+            "ci/cd",
+            "pipeline"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "test-cases",
+          "label": "Writing test cases",
+          "aliases": [
+            "test case"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "cypress",
+          "label": "Cypress",
+          "aliases": [
+            "cypress"
+          ],
+          "importance": "preferred"
+        }
+      ]
+    },
+    "fullstack-react": {
+      "split": "test",
+      "requirements": [
+        {
+          "id": "react",
+          "label": "React",
+          "aliases": [
+            "react"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "typescript",
+          "label": "TypeScript",
+          "aliases": [
+            "typescript"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "node",
+          "label": "Node.js",
+          "aliases": [
+            "node"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "rest-apis",
+          "label": "REST APIs",
+          "aliases": [
+            "rest",
+            "api"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "sql-database",
+          "label": "PostgreSQL or MySQL",
+          "aliases": [
+            "postgres",
+            "mysql",
+            "sql"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "graphql",
+          "label": "GraphQL",
+          "aliases": [
+            "graphql"
+          ],
+          "importance": "preferred"
+        },
+        {
+          "id": "docker",
+          "label": "Docker",
+          "aliases": [
+            "docker"
+          ],
+          "importance": "preferred"
+        }
+      ]
+    }
+  },
+  "resumes": {
+    "strong-backend": {
+      "tags": [
+        "strong"
+      ]
+    },
+    "weak-frontend": {
+      "tags": [
+        "weak"
+      ]
+    },
+    "synonyms": {
+      "tags": [
+        "synonyms"
+      ]
+    },
+    "aspiration": {
+      "tags": [
+        "aspiration"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "posting": "backend-api",
+      "resume": "strong-backend",
+      "supported": [
+        "docker",
+        "fastapi",
+        "postgresql",
+        "python",
+        "rest-api",
+        "terraform"
+      ],
+      "evidence": {
+        "python": [
+          4
+        ],
+        "fastapi": [
+          4
+        ],
+        "postgresql": [
+          5
+        ],
+        "docker": [
+          6
+        ],
+        "rest-api": [
+          4
+        ],
+        "terraform": [
+          7
+        ]
+      }
+    },
+    {
+      "posting": "backend-api",
+      "resume": "weak-frontend",
+      "supported": [],
+      "evidence": {}
+    },
+    {
+      "posting": "backend-api",
+      "resume": "aspiration",
+      "supported": [],
+      "evidence": {}
+    },
+    {
+      "posting": "backend-api",
+      "resume": "synonyms",
+      "supported": [
+        "docker",
+        "postgresql",
+        "rest-api"
+      ],
+      "evidence": {
+        "postgresql": [
+          5
+        ],
+        "docker": [
+          6
+        ],
+        "rest-api": [
+          4
+        ]
+      }
+    },
+    {
+      "posting": "qa-automation",
+      "resume": "strong-backend",
+      "supported": [
+        "cicd",
+        "python",
+        "test-cases"
+      ],
+      "evidence": {
+        "python": [
+          4
+        ],
+        "cicd": [
+          6
+        ],
+        "test-cases": [
+          8
+        ]
+      }
+    },
+    {
+      "posting": "qa-automation",
+      "resume": "weak-frontend",
+      "supported": [],
+      "evidence": {}
+    },
+    {
+      "posting": "qa-automation",
+      "resume": "synonyms",
+      "supported": [
+        "browser-automation",
+        "cicd",
+        "test-cases"
+      ],
+      "evidence": {
+        "browser-automation": [
+          8
+        ],
+        "cicd": [
+          7
+        ],
+        "test-cases": [
+          8
+        ]
+      }
+    },
+    {
+      "posting": "qa-automation",
+      "resume": "aspiration",
+      "supported": [
+        "test-cases"
+      ],
+      "evidence": {
+        "test-cases": [
+          5
+        ]
+      }
+    },
+    {
+      "posting": "fullstack-react",
+      "resume": "strong-backend",
+      "supported": [
+        "docker",
+        "rest-apis",
+        "sql-database"
+      ],
+      "evidence": {
+        "rest-apis": [
+          4
+        ],
+        "sql-database": [
+          5
+        ],
+        "docker": [
+          6
+        ]
+      }
+    },
+    {
+      "posting": "fullstack-react",
+      "resume": "weak-frontend",
+      "supported": [
+        "react",
+        "typescript"
+      ],
+      "evidence": {
+        "react": [
+          5
+        ],
+        "typescript": [
+          5
+        ]
+      }
+    },
+    {
+      "posting": "fullstack-react",
+      "resume": "synonyms",
+      "supported": [
+        "docker",
+        "rest-apis",
+        "sql-database"
+      ],
+      "evidence": {
+        "rest-apis": [
+          4
+        ],
+        "sql-database": [
+          5
+        ],
+        "docker": [
+          6
+        ]
+      }
+    },
+    {
+      "posting": "fullstack-react",
+      "resume": "aspiration",
+      "supported": [],
+      "evidence": {}
+    }
+  ]
+}

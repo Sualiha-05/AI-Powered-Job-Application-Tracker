@@ -1,0 +1,496 @@
+{
+  "split": "all",
+  "n_postings": 3,
+  "n_resumes": 4,
+  "n_pairs": 12,
+  "n_gold_requirements": 76,
+  "labels_hash": "03b767f55fe4",
+  "dataset": "evaluation\\data\\example",
+  "tfidf_thresholds": [
+    0.6
+  ],
+  "llm_model": null,
+  "llm_runs": 0,
+  "runs": [
+    {
+      "label": "keyword",
+      "matcher": "keyword",
+      "run": 1,
+      "n_pairs": 12,
+      "n_pairs_failed": 0,
+      "incomplete": false,
+      "n_requirements": 76,
+      "coverage": 0.7894736842105263,
+      "tp": 16,
+      "fp": 4,
+      "fn": 8,
+      "tn": 48,
+      "precision": 0.8,
+      "recall": 0.6666666666666666,
+      "f1": 0.7272727272727272,
+      "accuracy": 0.8421052631578947,
+      "f1_ci": [
+        0.45714285714285713,
+        0.8846153846153846
+      ],
+      "spearman_overall": 0.4705914156642371,
+      "spearman_per_posting_mean": 0.6341229756873943,
+      "n_postings_ranked": 3,
+      "evidence_hit_rate": 1.0,
+      "evidence_n": 16,
+      "per_tag": {
+        "aspiration": {
+          "n": 19,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": null,
+          "accuracy": 0.7368421052631579
+        },
+        "strong": {
+          "n": 19,
+          "precision": 1.0,
+          "recall": 0.8333333333333334,
+          "f1": 0.9090909090909091,
+          "accuracy": 0.8947368421052632
+        },
+        "synonyms": {
+          "n": 19,
+          "precision": 1.0,
+          "recall": 0.4444444444444444,
+          "f1": 0.6153846153846153,
+          "accuracy": 0.7368421052631579
+        },
+        "weak": {
+          "n": 19,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "ungrounded": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "mismatches": [
+        {
+          "posting": "backend-api",
+          "resume": "strong-backend",
+          "requirement": "Terraform",
+          "gold": true,
+          "predicted": false,
+          "covered": false,
+          "matcher_labels": []
+        },
+        {
+          "posting": "backend-api",
+          "resume": "aspiration",
+          "requirement": "Python",
+          "gold": false,
+          "predicted": true,
+          "covered": true,
+          "matcher_labels": [
+            "Python"
+          ]
+        },
+        {
+          "posting": "backend-api",
+          "resume": "aspiration",
+          "requirement": "Kubernetes",
+          "gold": false,
+          "predicted": true,
+          "covered": true,
+          "matcher_labels": [
+            "Kubernetes"
+          ]
+        },
+        {
+          "posting": "backend-api",
+          "resume": "synonyms",
+          "requirement": "REST API design",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST APIs"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "strong-backend",
+          "requirement": "Writing test cases",
+          "gold": true,
+          "predicted": false,
+          "covered": false,
+          "matcher_labels": []
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "synonyms",
+          "requirement": "Browser test automation",
+          "gold": true,
+          "predicted": false,
+          "covered": false,
+          "matcher_labels": []
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "synonyms",
+          "requirement": "CI/CD pipelines",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "CI/CD"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "synonyms",
+          "requirement": "Writing test cases",
+          "gold": true,
+          "predicted": false,
+          "covered": false,
+          "matcher_labels": []
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "aspiration",
+          "requirement": "Python scripting",
+          "gold": false,
+          "predicted": true,
+          "covered": true,
+          "matcher_labels": [
+            "Python"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "aspiration",
+          "requirement": "CI/CD pipelines",
+          "gold": false,
+          "predicted": true,
+          "covered": true,
+          "matcher_labels": [
+            "CI/CD"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "aspiration",
+          "requirement": "Writing test cases",
+          "gold": true,
+          "predicted": false,
+          "covered": false,
+          "matcher_labels": []
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "REST APIs",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST APIs"
+          ]
+        }
+      ],
+      "decision_map": {
+        "backend-api|strong-backend|python": true,
+        "backend-api|strong-backend|fastapi": true,
+        "backend-api|strong-backend|postgresql": true,
+        "backend-api|strong-backend|docker": true,
+        "backend-api|strong-backend|rest-api": true,
+        "backend-api|strong-backend|kubernetes": false,
+        "backend-api|strong-backend|terraform": false,
+        "backend-api|weak-frontend|python": false,
+        "backend-api|weak-frontend|fastapi": false,
+        "backend-api|weak-frontend|postgresql": false,
+        "backend-api|weak-frontend|docker": false,
+        "backend-api|weak-frontend|rest-api": false,
+        "backend-api|weak-frontend|kubernetes": false,
+        "backend-api|weak-frontend|terraform": false,
+        "backend-api|aspiration|python": true,
+        "backend-api|aspiration|fastapi": false,
+        "backend-api|aspiration|postgresql": false,
+        "backend-api|aspiration|docker": false,
+        "backend-api|aspiration|rest-api": false,
+        "backend-api|aspiration|kubernetes": true,
+        "backend-api|aspiration|terraform": false,
+        "backend-api|synonyms|python": false,
+        "backend-api|synonyms|fastapi": false,
+        "backend-api|synonyms|postgresql": true,
+        "backend-api|synonyms|docker": true,
+        "backend-api|synonyms|rest-api": false,
+        "backend-api|synonyms|kubernetes": false,
+        "backend-api|synonyms|terraform": false,
+        "qa-automation|strong-backend|browser-automation": false,
+        "qa-automation|strong-backend|python": true,
+        "qa-automation|strong-backend|cicd": true,
+        "qa-automation|strong-backend|test-cases": false,
+        "qa-automation|strong-backend|cypress": false,
+        "qa-automation|weak-frontend|browser-automation": false,
+        "qa-automation|weak-frontend|python": false,
+        "qa-automation|weak-frontend|cicd": false,
+        "qa-automation|weak-frontend|test-cases": false,
+        "qa-automation|weak-frontend|cypress": false,
+        "qa-automation|synonyms|browser-automation": false,
+        "qa-automation|synonyms|python": false,
+        "qa-automation|synonyms|cicd": false,
+        "qa-automation|synonyms|test-cases": false,
+        "qa-automation|synonyms|cypress": false,
+        "qa-automation|aspiration|browser-automation": false,
+        "qa-automation|aspiration|python": true,
+        "qa-automation|aspiration|cicd": true,
+        "qa-automation|aspiration|test-cases": false,
+        "qa-automation|aspiration|cypress": false,
+        "fullstack-react|strong-backend|react": false,
+        "fullstack-react|strong-backend|typescript": false,
+        "fullstack-react|strong-backend|node": false,
+        "fullstack-react|strong-backend|rest-apis": true,
+        "fullstack-react|strong-backend|sql-database": true,
+        "fullstack-react|strong-backend|graphql": false,
+        "fullstack-react|strong-backend|docker": true,
+        "fullstack-react|weak-frontend|react": true,
+        "fullstack-react|weak-frontend|typescript": true,
+        "fullstack-react|weak-frontend|node": false,
+        "fullstack-react|weak-frontend|rest-apis": false,
+        "fullstack-react|weak-frontend|sql-database": false,
+        "fullstack-react|weak-frontend|graphql": false,
+        "fullstack-react|weak-frontend|docker": false,
+        "fullstack-react|synonyms|react": false,
+        "fullstack-react|synonyms|typescript": false,
+        "fullstack-react|synonyms|node": false,
+        "fullstack-react|synonyms|rest-apis": false,
+        "fullstack-react|synonyms|sql-database": true,
+        "fullstack-react|synonyms|graphql": false,
+        "fullstack-react|synonyms|docker": true,
+        "fullstack-react|aspiration|react": false,
+        "fullstack-react|aspiration|typescript": false,
+        "fullstack-react|aspiration|node": false,
+        "fullstack-react|aspiration|rest-apis": false,
+        "fullstack-react|aspiration|sql-database": false,
+        "fullstack-react|aspiration|graphql": false,
+        "fullstack-react|aspiration|docker": false
+      }
+    },
+    {
+      "label": "tfidf@0.6",
+      "matcher": "tfidf",
+      "run": 1,
+      "n_pairs": 12,
+      "n_pairs_failed": 0,
+      "incomplete": false,
+      "n_requirements": 76,
+      "coverage": 1.0,
+      "tp": 17,
+      "fp": 0,
+      "fn": 7,
+      "tn": 52,
+      "precision": 1.0,
+      "recall": 0.7083333333333334,
+      "f1": 0.8292682926829268,
+      "accuracy": 0.9078947368421053,
+      "f1_ci": [
+        0.6046511627906976,
+        0.9714285714285714
+      ],
+      "spearman_overall": 0.6449150182347412,
+      "spearman_per_posting_mean": 0.6896785312429499,
+      "n_postings_ranked": 3,
+      "evidence_hit_rate": 1.0,
+      "evidence_n": 17,
+      "per_tag": {
+        "aspiration": {
+          "n": 19,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        },
+        "strong": {
+          "n": 19,
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571,
+          "accuracy": 0.8421052631578947
+        },
+        "synonyms": {
+          "n": 19,
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "f1": 0.7142857142857143,
+          "accuracy": 0.7894736842105263
+        },
+        "weak": {
+          "n": 19,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        }
+      },
+      "ungrounded": 0,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "mismatches": [
+        {
+          "posting": "backend-api",
+          "resume": "synonyms",
+          "requirement": "REST API design",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST API design"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "strong-backend",
+          "requirement": "Python scripting",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Python scripting"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "strong-backend",
+          "requirement": "CI/CD pipelines",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "CI/CD pipelines"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "strong-backend",
+          "requirement": "Writing test cases",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Writing test cases"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "synonyms",
+          "requirement": "CI/CD pipelines",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "CI/CD pipelines"
+          ]
+        },
+        {
+          "posting": "qa-automation",
+          "resume": "synonyms",
+          "requirement": "Writing test cases",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "Writing test cases"
+          ]
+        },
+        {
+          "posting": "fullstack-react",
+          "resume": "synonyms",
+          "requirement": "REST APIs",
+          "gold": true,
+          "predicted": false,
+          "covered": true,
+          "matcher_labels": [
+            "REST APIs"
+          ]
+        }
+      ],
+      "decision_map": {
+        "backend-api|strong-backend|python": true,
+        "backend-api|strong-backend|fastapi": true,
+        "backend-api|strong-backend|postgresql": true,
+        "backend-api|strong-backend|docker": true,
+        "backend-api|strong-backend|rest-api": true,
+        "backend-api|strong-backend|kubernetes": false,
+        "backend-api|strong-backend|terraform": true,
+        "backend-api|weak-frontend|python": false,
+        "backend-api|weak-frontend|fastapi": false,
+        "backend-api|weak-frontend|postgresql": false,
+        "backend-api|weak-frontend|docker": false,
+        "backend-api|weak-frontend|rest-api": false,
+        "backend-api|weak-frontend|kubernetes": false,
+        "backend-api|weak-frontend|terraform": false,
+        "backend-api|aspiration|python": false,
+        "backend-api|aspiration|fastapi": false,
+        "backend-api|aspiration|postgresql": false,
+        "backend-api|aspiration|docker": false,
+        "backend-api|aspiration|rest-api": false,
+        "backend-api|aspiration|kubernetes": false,
+        "backend-api|aspiration|terraform": false,
+        "backend-api|synonyms|python": false,
+        "backend-api|synonyms|fastapi": false,
+        "backend-api|synonyms|postgresql": true,
+        "backend-api|synonyms|docker": true,
+        "backend-api|synonyms|rest-api": false,
+        "backend-api|synonyms|kubernetes": false,
+        "backend-api|synonyms|terraform": false,
+        "qa-automation|strong-backend|browser-automation": false,
+        "qa-automation|strong-backend|python": false,
+        "qa-automation|strong-backend|cicd": false,
+        "qa-automation|strong-backend|test-cases": false,
+        "qa-automation|strong-backend|cypress": false,
+        "qa-automation|weak-frontend|browser-automation": false,
+        "qa-automation|weak-frontend|python": false,
+        "qa-automation|weak-frontend|cicd": false,
+        "qa-automation|weak-frontend|test-cases": false,
+        "qa-automation|weak-frontend|cypress": false,
+        "qa-automation|synonyms|browser-automation": true,
+        "qa-automation|synonyms|python": false,
+        "qa-automation|synonyms|cicd": false,
+        "qa-automation|synonyms|test-cases": false,
+        "qa-automation|synonyms|cypress": false,
+        "qa-automation|aspiration|browser-automation": false,
+        "qa-automation|aspiration|python": false,
+        "qa-automation|aspiration|cicd": false,
+        "qa-automation|aspiration|test-cases": true,
+        "qa-automation|aspiration|cypress": false,
+        "fullstack-react|strong-backend|react": false,
+        "fullstack-react|strong-backend|typescript": false,
+        "fullstack-react|strong-backend|node": false,
+        "fullstack-react|strong-backend|rest-apis": true,
+        "fullstack-react|strong-backend|sql-database": true,
+        "fullstack-react|strong-backend|graphql": false,
+        "fullstack-react|strong-backend|docker": true,
+        "fullstack-react|weak-frontend|react": true,
+        "fullstack-react|weak-frontend|typescript": true,
+        "fullstack-react|weak-frontend|node": false,
+        "fullstack-react|weak-frontend|rest-apis": false,
+        "fullstack-react|weak-frontend|sql-database": false,
+        "fullstack-react|weak-frontend|graphql": false,
+        "fullstack-react|weak-frontend|docker": false,
+        "fullstack-react|synonyms|react": false,
+        "fullstack-react|synonyms|typescript": false,
+        "fullstack-react|synonyms|node": false,
+        "fullstack-react|synonyms|rest-apis": false,
+        "fullstack-react|synonyms|sql-database": true,
+        "fullstack-react|synonyms|graphql": false,
+        "fullstack-react|synonyms|docker": true,
+        "fullstack-react|aspiration|react": false,
+        "fullstack-react|aspiration|typescript": false,
+        "fullstack-react|aspiration|node": false,
+        "fullstack-react|aspiration|rest-apis": false,
+        "fullstack-react|aspiration|sql-database": false,
+        "fullstack-react|aspiration|graphql": false,
+        "fullstack-react|aspiration|docker": false
+      }
+    }
+  ],
+  "llm_aggregate": null
+}

@@ -1,0 +1,408 @@
+{
+  "version": 1,
+  "postings": {
+    "backend-api": {
+      "split": "test",
+      "requirements": [
+        {
+          "id": "python-development",
+          "label": "Python development",
+          "aliases": [
+            "python"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "fastapi-development",
+          "label": "FastAPI development",
+          "aliases": [
+            "fastapi"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "postgresql-database",
+          "label": "PostgreSQL database",
+          "aliases": [
+            "postgresql",
+            "postgres"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "docker-containerization",
+          "label": "Docker containerization",
+          "aliases": [
+            "docker"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "rest-api-design",
+          "label": "REST API design",
+          "aliases": [
+            "rest",
+            "api"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "kubernetes",
+          "label": "Kubernetes",
+          "aliases": [
+            "kubernetes"
+          ],
+          "importance": "preferred"
+        },
+        {
+          "id": "terraform",
+          "label": "Terraform",
+          "aliases": [
+            "terraform"
+          ],
+          "importance": "preferred"
+        }
+      ]
+    },
+    "fullstack-react": {
+      "split": "dev",
+      "requirements": [
+        {
+          "id": "react-development",
+          "label": "React development",
+          "aliases": [
+            "react"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "typescript-development",
+          "label": "TypeScript development",
+          "aliases": [
+            "typescript",
+            "ts"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "node-js-development",
+          "label": "Node.js development",
+          "aliases": [
+            "node",
+            "nodejs"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "rest-api-development",
+          "label": "REST API development",
+          "aliases": [
+            "rest",
+            "api"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "relational-database",
+          "label": "Relational database",
+          "aliases": [
+            "postgresql",
+            "postgres",
+            "mysql"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "graphql",
+          "label": "GraphQL",
+          "aliases": [
+            "graphql"
+          ],
+          "importance": "preferred"
+        },
+        {
+          "id": "docker-containerization",
+          "label": "Docker containerization",
+          "aliases": [
+            "docker"
+          ],
+          "importance": "preferred"
+        }
+      ]
+    },
+    "qa-automation": {
+      "split": "test",
+      "requirements": [
+        {
+          "id": "python-development",
+          "label": "Python development",
+          "aliases": [
+            "python"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "selenium-automation",
+          "label": "Selenium automation",
+          "aliases": [
+            "selenium"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "test-case-design",
+          "label": "Test case design",
+          "aliases": [
+            "test cases",
+            "test plans"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "bug-tracking",
+          "label": "Bug tracking",
+          "aliases": [
+            "jira",
+            "defects",
+            "bugs"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "api-testing",
+          "label": "API testing",
+          "aliases": [
+            "api testing",
+            "postman"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "regression-testing",
+          "label": "Regression testing",
+          "aliases": [
+            "regression"
+          ],
+          "importance": "required"
+        },
+        {
+          "id": "ci-cd-pipelines",
+          "label": "CI/CD pipelines",
+          "aliases": [
+            "ci/cd",
+            "continuous integration"
+          ],
+          "importance": "preferred"
+        }
+      ]
+    }
+  },
+  "resumes": {
+    "aspiration": {
+      "tags": [
+        "aspiration"
+      ]
+    },
+    "strong-backend": {
+      "tags": [
+        "strong"
+      ]
+    },
+    "synonyms": {
+      "tags": [
+        "synonyms"
+      ]
+    },
+    "weak-frontend": {
+      "tags": [
+        "weak"
+      ]
+    }
+  },
+  "pairs": [
+    {
+      "posting": "backend-api",
+      "resume": "aspiration",
+      "supported": [],
+      "evidence": {}
+    },
+    {
+      "posting": "backend-api",
+      "resume": "strong-backend",
+      "supported": [
+        "python-development",
+        "fastapi-development",
+        "postgresql-database",
+        "docker-containerization",
+        "rest-api-design",
+        "terraform"
+      ],
+      "evidence": {
+        "python-development": [
+          4
+        ],
+        "fastapi-development": [
+          4
+        ],
+        "postgresql-database": [
+          5
+        ],
+        "docker-containerization": [
+          6
+        ],
+        "rest-api-design": [
+          4
+        ],
+        "terraform": [
+          7
+        ]
+      }
+    },
+    {
+      "posting": "backend-api",
+      "resume": "synonyms",
+      "supported": [
+        "postgresql-database",
+        "docker-containerization",
+        "rest-api-design"
+      ],
+      "evidence": {
+        "postgresql-database": [
+          5
+        ],
+        "docker-containerization": [
+          6
+        ],
+        "rest-api-design": [
+          4
+        ]
+      }
+    },
+    {
+      "posting": "backend-api",
+      "resume": "weak-frontend",
+      "supported": [],
+      "evidence": {}
+    },
+    {
+      "posting": "fullstack-react",
+      "resume": "aspiration",
+      "supported": [],
+      "evidence": {}
+    },
+    {
+      "posting": "fullstack-react",
+      "resume": "strong-backend",
+      "supported": [
+        "node-js-development",
+        "rest-api-development",
+        "relational-database",
+        "docker-containerization"
+      ],
+      "evidence": {
+        "node-js-development": [
+          2
+        ],
+        "rest-api-development": [
+          4
+        ],
+        "relational-database": [
+          5
+        ],
+        "docker-containerization": [
+          6
+        ]
+      }
+    },
+    {
+      "posting": "fullstack-react",
+      "resume": "synonyms",
+      "supported": [
+        "react-development",
+        "typescript-development",
+        "node-js-development",
+        "rest-api-development",
+        "relational-database",
+        "docker-containerization"
+      ],
+      "evidence": {
+        "react-development": [
+          2
+        ],
+        "typescript-development": [
+          2
+        ],
+        "node-js-development": [
+          2
+        ],
+        "rest-api-development": [
+          2
+        ],
+        "relational-database": [
+          5
+        ],
+        "docker-containerization": [
+          6
+        ]
+      }
+    },
+    {
+      "posting": "fullstack-react",
+      "resume": "weak-frontend",
+      "supported": [
+        "react-development",
+        "typescript-development"
+      ],
+      "evidence": {
+        "react-development": [
+          2
+        ],
+        "typescript-development": [
+          5
+        ]
+      }
+    },
+    {
+      "posting": "qa-automation",
+      "resume": "aspiration",
+      "supported": [
+        "test-case-design",
+        "bug-tracking",
+        "ci-cd-pipelines"
+      ],
+      "evidence": {
+        "test-case-design": [
+          2
+        ],
+        "bug-tracking": [
+          4
+        ],
+        "ci-cd-pipelines": [
+          8
+        ]
+      }
+    },
+    {
+      "posting": "qa-automation",
+      "resume": "strong-backend",
+      "supported": [
+        "python-development"
+      ],
+      "evidence": {}
+    },
+    {
+      "posting": "qa-automation",
+      "resume": "synonyms",
+      "supported": [
+        "ci-cd-pipelines"
+      ],
+      "evidence": {}
+    },
+    {
+      "posting": "qa-automation",
+      "resume": "weak-frontend",
+      "supported": [],
+      "evidence": {}
+    }
+  ]
+}

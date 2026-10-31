@@ -1,0 +1,7 @@
+QA Automation Engineer
+Requirements:
+- Browser test automation, for example Selenium
+- Python scripting
+- CI/CD pipelines
+- Writing test cases
+Nice to have: Cypress

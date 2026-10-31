@@ -1,0 +1,7 @@
+Sam Rivera
+Frontend Developer
+
+Built responsive landing pages with HTML, CSS and JavaScript
+Developed a React dashboard in TypeScript for an internal sales team
+Worked with designers in Figma and fixed accessibility issues
+Used Git and pull requests daily

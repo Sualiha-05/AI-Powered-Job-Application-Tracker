@@ -122,3 +122,10 @@ same call, asks Gemini for JSON that follows the tool's schema (structured outpu
 Grounding, limits and error handling are therefore identical for both. Provider errors are reported to the backend as
 "LLM request failed (<ErrorClass> <status>)", never with the provider's message, which can contain secrets.
 Free-tier Gemini content may be used by Google to improve its products (see `DEPLOY.md`).
+## Evaluation harness
+
+`evaluation/` imports the ML service's matchers directly (no servers, no backend limits) and scores them against hand-written
+labels. Requirement-level agreement is measured by mapping each matcher's own requirement text onto the gold requirements through
+aliases, and ranking quality by Spearman correlation between a matcher's score and the labeled share of supported requirements.
+Only AI answers are cached (keyed by text, prompt and repeat number); deterministic matchers are recomputed. Labeling code never
+runs a matcher, so labels stay blind. The bias audit changes only the first resume line and subtracts a same-name noise baseline.
