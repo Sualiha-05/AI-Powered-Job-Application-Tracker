@@ -1,0 +1,9 @@
+Jamie Wilson
+Junior Machine Learning Engineer
+
+Trained classification and regression models using Python and scikit-learn.
+Prepared datasets with pandas and evaluated models using precision, recall, and F1.
+Built a small image-classification prototype using TensorFlow.
+Served a model through a basic FastAPI endpoint.
+Used Git and Jupyter notebooks for experiment tracking and development.
+Currently learning model monitoring and MLflow.

@@ -1,0 +1,9 @@
+Casey Rivera
+Entry-Level Python Data Analyst
+
+Used Python, pandas, and NumPy to clean and analyze educational datasets.
+Created charts and dashboards with Matplotlib and Power BI.
+Wrote SQL queries to retrieve records from MySQL databases.
+Completed coursework in statistics and introductory machine learning.
+Prepared notebooks explaining data-cleaning steps and analysis findings.
+Has read about cloud data warehouses but has not used them in a project.

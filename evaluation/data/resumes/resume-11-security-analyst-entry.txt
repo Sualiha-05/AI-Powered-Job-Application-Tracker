@@ -1,0 +1,9 @@
+Emerson Davis
+Entry-Level Cybersecurity Analyst
+
+Completed coursework in networking, operating systems, and information security.
+Used Wireshark to inspect network traffic in classroom lab exercises.
+Practiced vulnerability scanning with Nmap in authorized lab environments.
+Wrote Python scripts for simple log parsing and text analysis.
+Documented security findings and recommended basic remediation steps.
+Interested in learning SIEM platforms and incident response procedures.

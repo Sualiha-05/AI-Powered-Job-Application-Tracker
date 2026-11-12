@@ -1,0 +1,9 @@
+Robin Ellis
+Application Developer
+
+Implemented server-side features in JavaScript with Express.
+Created HTTP endpoints that allowed client applications to read and update records.
+Stored application information in a document-oriented MongoDB database.
+Added automated checks for server routes and request validation.
+Packaged the service and its database for local use with container tooling.
+Worked with teammates through Git branches and pull requests.

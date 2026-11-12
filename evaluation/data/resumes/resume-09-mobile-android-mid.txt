@@ -1,0 +1,9 @@
+Samira Ahmed
+Android Developer
+
+Built Android applications using Kotlin and Android Studio.
+Integrated mobile screens with REST APIs using Retrofit.
+Used Room database for local persistence and handled offline states.
+Applied MVVM architecture and wrote unit tests with JUnit.
+Managed source code with Git and participated in pull-request reviews.
+Published an academic project build for internal user testing.

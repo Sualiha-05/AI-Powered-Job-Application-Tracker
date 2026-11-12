@@ -1,0 +1,9 @@
+Alex Kim
+Junior DevOps Engineer
+
+Wrote Dockerfiles and Docker Compose configurations for development environments.
+Created basic CI workflows using GitHub Actions.
+Worked with Linux command-line tools, shell scripts, and Git.
+Deployed a small application to an AWS virtual machine.
+Practiced Kubernetes deployments in a local learning environment.
+Has introductory knowledge of Terraform from guided labs.

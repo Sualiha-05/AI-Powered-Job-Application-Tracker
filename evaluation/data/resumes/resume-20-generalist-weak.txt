@@ -1,0 +1,9 @@
+Parker Reed
+Technology Graduate
+
+Completed a bachelor's degree with introductory coursework in programming and databases.
+Wrote small assignments in Python and Java.
+Created basic HTML pages during a web development course.
+Used Microsoft Excel and presentation software for university assignments.
+Has not developed a production application or worked with cloud infrastructure.
+Interested in exploring different areas of software development.

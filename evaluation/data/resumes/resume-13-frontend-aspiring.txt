@@ -1,0 +1,8 @@
+Quinn Foster
+Aspiring Frontend Developer
+
+Completed online lessons in HTML, CSS, and JavaScript fundamentals.
+Created a static personal profile page by following a tutorial.
+Curious about React and interested in learning TypeScript.
+Enjoys exploring web design examples and watching frontend development videos.
+Has not yet built a React application or connected a page to an API.

@@ -1,0 +1,9 @@
+Morgan Patel
+Senior Java Backend Engineer
+
+Designed Java and Spring Boot microservices for high-volume business applications.
+Implemented REST APIs and asynchronous messaging with Apache Kafka.
+Optimized PostgreSQL queries, indexes, and database transactions.
+Built CI/CD pipelines with Jenkins and GitHub Actions.
+Deployed containerized services to Kubernetes clusters.
+Reviewed architecture proposals and mentored four junior engineers.

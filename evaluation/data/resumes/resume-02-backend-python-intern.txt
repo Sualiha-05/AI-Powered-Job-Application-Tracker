@@ -1,0 +1,9 @@
+Riley Chen
+Backend Development Intern
+
+Completed a six-month software development internship focused on Python services.
+Created REST endpoints using Python and FastAPI for an internal inventory application.
+Used PostgreSQL to store application data and wrote basic SQL queries.
+Added request validation and error handling with Pydantic.
+Used Git for source control and participated in code reviews.
+Has introductory experience with Docker through local development exercises.

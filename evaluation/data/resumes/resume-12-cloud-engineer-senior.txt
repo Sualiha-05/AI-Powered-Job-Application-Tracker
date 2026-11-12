@@ -1,0 +1,9 @@
+Harper Singh
+Cloud Infrastructure Engineer
+
+Designed cloud infrastructure on AWS using EC2, S3, IAM, and VPC.
+Provisioned repeatable environments with Terraform modules.
+Built and maintained Kubernetes workloads using Helm.
+Configured monitoring and alerting with Prometheus and Grafana.
+Automated build and deployment workflows with Jenkins.
+Led cloud cost reviews and documented infrastructure standards.

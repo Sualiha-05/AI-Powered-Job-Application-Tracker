@@ -1,0 +1,9 @@
+Skyler Bennett
+Junior Web Application Developer
+
+Previously worked in customer support and transitioned into software development.
+Built a task management application with React, Node.js, and SQLite.
+Implemented login, form validation, and CRUD operations.
+Used CSS media queries to make pages usable on mobile devices.
+Wrote project documentation and tracked tasks with GitHub Issues.
+Has no professional software development employment yet.

@@ -1,0 +1,9 @@
+Dakota James
+Junior Software QA Tester
+
+Performed manual functional testing of web forms and user workflows.
+Prepared test scenarios from user stories and acceptance criteria.
+Recorded reproducible defect steps with screenshots and expected results.
+Used spreadsheets to track test execution and defect status.
+Has introductory experience with Postman for sending API requests.
+Interested in learning Selenium automation and Python.

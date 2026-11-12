@@ -1,0 +1,9 @@
+Cameron Lewis
+PHP Backend Developer
+
+Developed server-rendered web applications using PHP and Laravel.
+Designed MySQL tables, migrations, and database relationships.
+Created REST endpoints and integrated third-party payment APIs.
+Implemented authentication, authorization, and server-side validation.
+Wrote feature tests with PHPUnit and managed code using Git.
+Maintained applications on Linux-based hosting environments.

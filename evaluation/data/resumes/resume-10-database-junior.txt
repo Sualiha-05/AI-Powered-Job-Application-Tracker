@@ -1,0 +1,9 @@
+Noah Garcia
+Junior Database Developer
+
+Created relational database schemas for student and library management projects.
+Wrote SQL queries, joins, views, and stored procedures in MySQL.
+Practiced PostgreSQL administration and database backup procedures.
+Analyzed slow queries and learned basic indexing techniques.
+Used Python scripts to import and validate CSV data.
+Has not administered a production database.

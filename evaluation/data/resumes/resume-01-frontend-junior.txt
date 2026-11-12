@@ -1,0 +1,9 @@
+Avery Morgan
+Junior Frontend Developer
+
+Built responsive web pages using HTML, CSS, and JavaScript for academic and personal projects.
+Developed reusable interface components with React.
+Used Git and GitHub for version control and team collaboration.
+Connected frontend pages to REST APIs using fetch and Axios.
+Practiced writing component tests with Jest and React Testing Library.
+Interested in learning accessibility standards and performance optimization.

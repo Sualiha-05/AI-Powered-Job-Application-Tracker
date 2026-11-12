@@ -1,0 +1,9 @@
+Finley Carter
+NLP Developer
+
+Developed text-classification experiments using Python and Hugging Face Transformers.
+Prepared text datasets, tokenized input, and evaluated model performance.
+Built a semantic-search prototype using sentence embeddings and FAISS.
+Exposed inference functionality through a FastAPI service.
+Used Git and Docker to package and share experiments.
+Has not deployed a large-scale language model in production.

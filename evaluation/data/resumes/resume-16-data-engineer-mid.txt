@@ -1,0 +1,9 @@
+Reese Martin
+Data Engineer
+
+Built batch data pipelines using Python and Apache Airflow.
+Transformed structured data with SQL and loaded it into a PostgreSQL warehouse.
+Worked with cloud object storage and scheduled data-processing jobs.
+Added data-quality checks for missing values and duplicate records.
+Used Docker for reproducible local pipeline development.
+Documented pipeline dependencies and investigated failed scheduled runs.

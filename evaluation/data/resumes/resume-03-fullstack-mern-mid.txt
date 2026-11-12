@@ -1,0 +1,9 @@
+Taylor Brooks
+Full-Stack Developer
+
+Developed and maintained web applications using MongoDB, Express.js, React, and Node.js.
+Designed REST APIs and integrated them with React interfaces.
+Implemented authentication using JSON Web Tokens and role-based access controls.
+Wrote automated tests with Jest and Supertest.
+Containerized development services with Docker Compose.
+Deployed applications to a cloud hosting platform and monitored application logs.

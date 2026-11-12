@@ -1,0 +1,9 @@
+Drew Thompson
+QA Automation Engineer
+
+Designed test plans, test cases, and regression suites for web applications.
+Automated browser workflows using Python and Selenium WebDriver.
+Performed API testing with Postman and validated JSON responses.
+Logged defects, maintained bug reports, and tracked issues in Jira.
+Integrated automated tests into GitHub Actions CI workflows.
+Collaborated with developers during sprint planning and defect triage.
