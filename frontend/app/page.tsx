@@ -154,8 +154,9 @@ export default function Home() {
   if (authed === null) return <main className="shell" />;
 
   return (
-    <main className="shell">
+    <>
       <header className="top">
+        <div className="top-inner">
         <div className="brand">
           <span className="brand-mark" aria-hidden="true">J</span>
           <div>
@@ -171,8 +172,9 @@ export default function Home() {
             </button>
           )}
         </div>
+        </div>
       </header>
-
+      <main className="shell">
       {error && <p className="error" role="alert">{error}</p>}
 
       {authed ? (
@@ -216,7 +218,8 @@ export default function Home() {
       ) : (
         <AuthForm onAuthed={load} />
       )}
-    </main>
+      </main>
+    </>
   );
 }
 
@@ -229,7 +232,7 @@ function Pipeline({ apps }: { apps: Application[] }) {
     [apps.length, 'Total tracked'],
     [count('applied') + count('interview'), 'In progress'],
     [count('offer'), 'Offers'],
-    [`${rate}%`, 'Reached interview'],
+    [`${rate}%`, 'Interview rate'],
   ];
   return (
     <section className="pipeline" aria-label="Pipeline summary">

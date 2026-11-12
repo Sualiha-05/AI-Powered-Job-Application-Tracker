@@ -12,6 +12,10 @@ interface Props {
 }
 
 const hue = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
+const tidy = (raw: string) => {
+  const t = raw.trim().replace(/[\s,;:!.-]+$/, '');
+  return t === t.toUpperCase() && /[A-Z]/.test(t) ? t.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase()) : t;
+};
 const initials = (s: string) =>
   s.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]!.toUpperCase()).join('') || '?';
 
@@ -76,12 +80,12 @@ export default function Board({ apps, loading, onMove, onDelete, onMatch }: Prop
                 }}
               >
                 <div className="card-head">
-                  <span className="avatar" aria-hidden="true" style={{ background: `hsl(${hue(a.company)} 55% 42%)` }}>
+                  <span className="avatar" aria-hidden="true" style={{ background: `hsl(${hue(a.company)} 70% 94%)`, color: `hsl(${hue(a.company)} 55% 32%)` }}>
                     {initials(a.company)}
                   </span>
                   <div>
-                    <strong className="card-title">{a.title}</strong>
-                    <span className="company">{a.company}</span>
+                    <strong className="card-title" title={a.title}>{tidy(a.title)}</strong>
+                    <span className="company">{tidy(a.company)}</span>
                   </div>
                 </div>
 
@@ -112,7 +116,7 @@ export default function Board({ apps, loading, onMove, onDelete, onMatch }: Prop
                         if (window.confirm(`Delete "${a.title}" at ${a.company}?`)) onDelete(a.id);
                       }}
                     >
-                      ✕
+                      ×
                     </button>
                   </div>
                 </div>

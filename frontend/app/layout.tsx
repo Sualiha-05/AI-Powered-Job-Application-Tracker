@@ -1,9 +1,8 @@
 import type { ReactNode } from 'react';
-import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 
-const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--f-display', display: 'swap' });
-const body = Instrument_Sans({ subsets: ['latin'], variable: '--f-body', display: 'swap' });
+const inter = Inter({ subsets: ['latin'], variable: '--f-body', display: 'swap' });
 
 export const metadata = {
   title: 'Job Tracker',
@@ -12,8 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${display.variable} ${body.variable}`}>{children}</body>
+    <html lang="en" className={inter.variable}>
+      <body>{children}</body>
     </html>
   );
 }
