@@ -1,0 +1,10 @@
+PHP Backend Developer
+About us: We maintain APIs and web platforms for service companies.
+Requirements:
+- PHP
+- Laravel
+- MySQL
+- REST APIs
+- Authentication
+Nice to have: Redis, Docker
+Benefits: Paid leave

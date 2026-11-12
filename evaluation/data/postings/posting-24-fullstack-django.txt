@@ -1,0 +1,11 @@
+Full-Stack Developer (Django)
+About us: We build web portals for professional service providers.
+Requirements:
+- Python
+- Django
+- HTML
+- CSS
+- JavaScript
+- PostgreSQL
+Nice to have: React, Docker
+Benefits: Mentorship and flexible hours

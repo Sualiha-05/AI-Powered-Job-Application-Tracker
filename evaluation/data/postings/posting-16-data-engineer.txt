@@ -1,0 +1,10 @@
+Data Engineer
+About us: We maintain data pipelines for analytics products.
+Requirements:
+- Python
+- SQL
+- ETL pipelines
+- Data modeling
+- PostgreSQL
+Nice to have: Apache Airflow, Spark
+Benefits: Hybrid schedule

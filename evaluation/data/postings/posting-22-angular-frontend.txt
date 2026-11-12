@@ -1,0 +1,10 @@
+Frontend Developer (Angular)
+About us: We develop dashboards for enterprise customers.
+Requirements:
+- TypeScript
+- Angular
+- HTML
+- CSS
+- RxJS
+Nice to have: NgRx, unit testing
+Benefits: Learning and development support

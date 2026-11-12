@@ -1,0 +1,10 @@
+React Native Developer
+About us: We create cross-platform apps for small businesses.
+Requirements:
+- JavaScript
+- React Native
+- Mobile UI development
+- REST API integration
+- Git
+Nice to have: TypeScript, Firebase
+Benefits: Flexible location

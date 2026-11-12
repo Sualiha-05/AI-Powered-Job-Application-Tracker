@@ -1,0 +1,10 @@
+Junior Data Analyst
+About us: We help retail teams understand sales and customer trends.
+Requirements:
+- SQL
+- Excel
+- Data cleaning
+- Data visualization
+- Analytical reporting
+Nice to have: Python, Power BI
+Benefits: Entry-level mentoring

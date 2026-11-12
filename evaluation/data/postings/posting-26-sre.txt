@@ -1,0 +1,10 @@
+Site Reliability Engineer
+About us: We keep production services reliable and observable.
+Requirements:
+- Linux
+- Monitoring and alerting
+- Incident response
+- Scripting
+- Cloud infrastructure
+Nice to have: Prometheus, Grafana, Kubernetes
+Benefits: On-call compensation

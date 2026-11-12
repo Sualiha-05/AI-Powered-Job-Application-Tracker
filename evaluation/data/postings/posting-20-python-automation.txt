@@ -1,0 +1,10 @@
+Python Automation Developer
+About us: We automate repetitive operational tasks for client teams.
+Requirements:
+- Python
+- Scripting
+- File handling
+- API integration
+- Error handling
+Nice to have: Selenium, scheduling tools
+Benefits: Training allowance

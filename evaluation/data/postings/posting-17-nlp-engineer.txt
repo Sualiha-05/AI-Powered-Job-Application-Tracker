@@ -1,0 +1,10 @@
+NLP Engineer
+About us: We develop language-processing features for support platforms.
+Requirements:
+- Python
+- Natural language processing
+- Text preprocessing
+- Model evaluation
+- Hugging Face Transformers
+Nice to have: spaCy, vector databases
+Benefits: Experimentation budget

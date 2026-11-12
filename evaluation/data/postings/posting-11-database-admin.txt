@@ -1,0 +1,10 @@
+Junior Database Administrator
+About us: We support database systems for a business software provider.
+Requirements:
+- SQL
+- Database backups
+- PostgreSQL
+- Database monitoring
+- Query troubleshooting
+Nice to have: MySQL, scripting
+Benefits: Certification support

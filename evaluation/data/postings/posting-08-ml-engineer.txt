@@ -1,0 +1,10 @@
+Machine Learning Engineer
+About us: We build predictive features for business software.
+Requirements:
+- Python
+- Machine learning
+- Scikit-learn
+- Model evaluation
+- Data preprocessing
+Nice to have: PyTorch, FastAPI
+Benefits: Research time

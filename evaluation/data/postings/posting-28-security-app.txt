@@ -1,0 +1,10 @@
+Application Security Engineer
+About us: We improve the security of web applications and APIs.
+Requirements:
+- Web application security
+- OWASP Top 10
+- Vulnerability testing
+- HTTP fundamentals
+- Security reporting
+Nice to have: Burp Suite, Python
+Benefits: Security certification support

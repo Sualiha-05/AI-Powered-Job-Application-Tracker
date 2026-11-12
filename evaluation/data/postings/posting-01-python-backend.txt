@@ -1,0 +1,10 @@
+Backend Developer (Python)
+About us: We build internal workflow tools for growing businesses.
+Requirements:
+- Python
+- FastAPI
+- PostgreSQL
+- REST API development
+- Git
+Nice to have: Docker, pytest
+Benefits: Learning budget and flexible hours

@@ -1,0 +1,10 @@
+Technical Support Engineer
+About us: We provide software support to business customers.
+Requirements:
+- Troubleshooting
+- Ticket documentation
+- Basic SQL
+- Clear written communication
+- Windows and Linux fundamentals
+Nice to have: Networking, scripting
+Benefits: Shift allowance

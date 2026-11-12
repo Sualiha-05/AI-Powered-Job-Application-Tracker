@@ -1,0 +1,11 @@
+Frontend Developer (React)
+About us: We create accessible web products for education providers.
+Requirements:
+- HTML
+- CSS
+- JavaScript
+- React
+- Responsive web design
+- Git
+Nice to have: TypeScript, accessibility testing
+Benefits: Flexible schedule

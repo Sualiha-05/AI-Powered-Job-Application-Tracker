@@ -1,0 +1,10 @@
+Cybersecurity Analyst
+About us: We help organizations monitor and respond to security events.
+Requirements:
+- Network security fundamentals
+- Security monitoring
+- Incident documentation
+- Linux
+- Vulnerability assessment
+Nice to have: SIEM tools, Python
+Benefits: Security training

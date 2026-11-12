@@ -1,0 +1,10 @@
+Web UI Developer
+About us: We design and implement interfaces for digital products.
+Requirements:
+- HTML
+- CSS
+- JavaScript
+- Responsive layouts
+- Figma handoff implementation
+Nice to have: React, CSS animations
+Benefits: Collaborative design team

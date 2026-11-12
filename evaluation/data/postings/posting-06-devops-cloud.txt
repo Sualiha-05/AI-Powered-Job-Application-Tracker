@@ -1,0 +1,10 @@
+DevOps Engineer
+About us: We operate cloud-hosted services for a SaaS platform.
+Requirements:
+- Linux
+- Docker
+- CI/CD pipelines
+- AWS
+- Infrastructure monitoring
+Nice to have: Kubernetes, Terraform
+Benefits: Remote-friendly team

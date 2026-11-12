@@ -1,0 +1,10 @@
+QA Automation Engineer
+About us: Our team tests web applications used by logistics companies.
+Requirements:
+- Selenium
+- Python
+- Automated test scripts
+- API testing
+- Bug reporting
+Nice to have: Jenkins, Postman
+Benefits: Training support

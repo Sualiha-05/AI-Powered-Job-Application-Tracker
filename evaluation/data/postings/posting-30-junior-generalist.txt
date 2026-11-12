@@ -1,0 +1,10 @@
+Junior Software Developer
+About us: We are a product team developing and maintaining web applications.
+Requirements:
+- Programming fundamentals
+- JavaScript
+- HTML and CSS
+- Git
+- Debugging
+Nice to have: React, Node.js, SQL
+Benefits: Structured onboarding

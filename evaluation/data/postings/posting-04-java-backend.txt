@@ -1,0 +1,10 @@
+Java Backend Engineer
+About us: We develop transaction services for enterprise customers.
+Requirements:
+- Java
+- Spring Boot
+- SQL
+- Microservices
+- Unit testing
+Nice to have: Kafka, Docker
+Benefits: Health coverage

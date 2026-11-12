@@ -1,0 +1,11 @@
+Full-Stack Developer (MERN)
+About us: We are a small product team building customer-facing web applications.
+Requirements:
+- JavaScript
+- React
+- Node.js
+- Express.js
+- MongoDB
+- REST API integration
+Nice to have: TypeScript, Redux
+Benefits: Hybrid work and mentorship

@@ -1,0 +1,10 @@
+Software Development Engineer in Test
+About us: We build automated quality checks for web products.
+Requirements:
+- JavaScript
+- Playwright
+- Automated browser testing
+- API testing
+- CI pipelines
+Nice to have: TypeScript, Docker
+Benefits: Flexible hours

@@ -1,0 +1,10 @@
+Manual QA Tester
+About us: We test web and mobile applications before release.
+Requirements:
+- Test case writing
+- Manual testing
+- Bug tracking
+- Regression testing
+- Clear documentation
+Nice to have: Postman, basic SQL
+Benefits: Beginner-friendly team

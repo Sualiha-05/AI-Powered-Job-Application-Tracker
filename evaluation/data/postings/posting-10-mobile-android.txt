@@ -1,0 +1,10 @@
+Android Developer
+About us: We build mobile apps for appointment-based services.
+Requirements:
+- Kotlin
+- Android SDK
+- REST API integration
+- Android Studio
+- Debugging
+Nice to have: Jetpack Compose, Firebase
+Benefits: Device testing lab

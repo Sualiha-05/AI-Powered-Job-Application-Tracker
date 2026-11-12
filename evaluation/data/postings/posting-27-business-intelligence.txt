@@ -1,0 +1,10 @@
+Business Intelligence Analyst
+About us: We turn operational data into reports for decision makers.
+Requirements:
+- SQL
+- Power BI
+- Dashboard development
+- Data analysis
+- Data visualization
+Nice to have: DAX, Excel
+Benefits: Annual learning allowance

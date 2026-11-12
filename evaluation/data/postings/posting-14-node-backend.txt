@@ -1,0 +1,10 @@
+Node.js API Developer
+About us: We build integration services for online marketplaces.
+Requirements:
+- Node.js
+- Express.js
+- MongoDB
+- API design
+- Authentication and authorization
+Nice to have: Redis, Jest
+Benefits: Flexible working hours

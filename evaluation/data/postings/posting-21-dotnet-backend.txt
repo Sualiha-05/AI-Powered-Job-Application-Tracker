@@ -1,0 +1,10 @@
+Backend Developer (.NET)
+About us: We build business applications for finance and operations teams.
+Requirements:
+- C#
+- .NET
+- ASP.NET Core
+- SQL Server
+- REST API development
+Nice to have: Entity Framework, Azure
+Benefits: Medical coverage

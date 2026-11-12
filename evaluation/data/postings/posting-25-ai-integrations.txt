@@ -1,0 +1,10 @@
+AI Application Developer
+About us: We add AI-powered features to existing web products.
+Requirements:
+- Python
+- REST APIs
+- LLM API integration
+- Prompt design
+- Git
+Nice to have: LangChain, vector search
+Benefits: Remote collaboration
