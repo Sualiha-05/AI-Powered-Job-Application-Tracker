@@ -15,9 +15,10 @@
 
 ## Week 3: evaluation, polish, launch
 - [x] Evaluation harness built: `evaluation/` (labeling tool, scoring, bias audit; see `evaluation/README.md`)
-- [ ] Write about 10 real postings and 4 to 5 made-up resume variants each; label them blind; commit `labels.json`
-- [ ] Tune the TF-IDF threshold on `dev`, then report `test` once (keyword, TF-IDF, AI with 3 repeats)
-- [ ] Name-swap bias audit (replace the illustrative name list with a validated one)
+- [x] Labeled set built and committed (3 postings, 4 resume variants: small; extend if time allows)
+- [x] Threshold sweep on `dev` (no separation, so 0.5 is a default), `test` scored with keyword, TF-IDF and AI x3
+- [x] Name-swap bias audit run (illustrative names; re-run once with the updated report to keep a single documented run)
+- [ ] Finish `docs/EVALUATION.md` (resolve every `[CHECK]`)
 - [ ] CI, tests on critical paths, final deploy
 - [ ] README (diagram, related work, results, what failed), demo video, 3-5 users
 

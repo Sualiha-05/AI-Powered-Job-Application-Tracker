@@ -11,6 +11,8 @@ import {
   Application,
   ApiError,
   Resume,
+  STATUS_LABEL,
+  STATUSES,
   Status,
   clearToken,
   createApplication,
@@ -32,6 +34,14 @@ export default function Home() {
   const [matchId, setMatchId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [api, setApi] = useState<ApiState>('checking');
+  const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState('');
+  const [toast, setToast] = useState<{ text: string; undo?: () => void } | null>(null);
+
+  const notify = useCallback((text: string, undo?: () => void) => {
+    setToast({ text, undo });
+    window.setTimeout(() => setToast((t) => (t?.text === text ? null : t)), 5000);
+  }, []);
 
   const signOut = useCallback(() => {
     clearToken();
@@ -60,6 +70,8 @@ export default function Home() {
       if (err instanceof ApiError && err.status === 401) return signOut();
       setAuthed(true);
       handleError(err);
+    } finally {
+      setLoading(false);
     }
   }, [handleError, signOut]);
 
@@ -114,6 +126,8 @@ export default function Home() {
     try {
       await updateApplication(id, { status });
       setError(null);
+      const prev = before.find((a) => a.id === id)?.status;
+      notify(`Moved to ${STATUS_LABEL[status]}`, prev && prev !== status ? () => move(id, prev) : undefined);
     } catch (err) {
       setApps(before);
       handleError(err);
@@ -133,6 +147,8 @@ export default function Home() {
 
   const statusLabel = { checking: 'Checking API…', up: 'API connected', down: 'API unreachable' }[api];
 
+  const q = query.trim().toLowerCase();
+  const shown = q ? apps.filter((a) => `${a.title} ${a.company}`.toLowerCase().includes(q)) : apps;
   const matchApp = apps.find((a) => a.id === matchId) ?? null;
 
   if (authed === null) return <main className="shell" />;
@@ -140,11 +156,17 @@ export default function Home() {
   return (
     <main className="shell">
       <header className="top">
-        <h1>{authed ? 'Your applications' : 'Job Tracker'}</h1>
+        <div className="brand">
+          <span className="brand-mark" aria-hidden="true">J</span>
+          <div>
+            <h1>Job Tracker</h1>
+            <p>{authed ? 'Your search, one pipeline.' : 'Applications, resumes and evidence in one place.'}</p>
+          </div>
+        </div>
         <div className="top-right">
           <p className="status" data-state={api}>{statusLabel}</p>
           {authed && (
-            <button type="button" className="link" onClick={signOut}>
+            <button type="button" className="ghost" onClick={signOut}>
               Sign out
             </button>
           )}
@@ -155,9 +177,21 @@ export default function Home() {
 
       {authed ? (
         <>
+          <Pipeline apps={apps} />
           <ResumePanel resumes={resumes} onUpload={addResume} onDelete={removeResume} />
-          <AddApplicationForm onCreate={add} />
-          <Board apps={apps} onMove={move} onDelete={remove} onMatch={(a) => setMatchId(a.id)} />
+          <div className="toolbar">
+            <label className="search">
+              <span className="sr-only">Search applications</span>
+              <input
+                type="search"
+                placeholder="Search by role or company"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </label>
+            <AddApplicationForm onCreate={add} />
+          </div>
+          <Board apps={shown} loading={loading} onMove={move} onDelete={remove} onMatch={(a) => setMatchId(a.id)} />
           {matchApp && (
             <MatchDialog
               key={matchApp.id}
@@ -168,10 +202,57 @@ export default function Home() {
               onUnauthorized={signOut}
             />
           )}
+          {toast && (
+            <div className="toast" role="status">
+              {toast.text}
+              {toast.undo && (
+                <button type="button" onClick={() => { toast.undo?.(); setToast(null); }}>
+                  Undo
+                </button>
+              )}
+            </div>
+          )}
         </>
       ) : (
         <AuthForm onAuthed={load} />
       )}
     </main>
+  );
+}
+
+function Pipeline({ apps }: { apps: Application[] }) {
+  const count = (s: Status) => apps.filter((a) => a.status === s).length;
+  const sent = apps.length - count('saved');
+  const advanced = count('interview') + count('offer');
+  const rate = sent > 0 ? Math.round((advanced / sent) * 100) : 0;
+  const kpis: [string | number, string][] = [
+    [apps.length, 'Total tracked'],
+    [count('applied') + count('interview'), 'In progress'],
+    [count('offer'), 'Offers'],
+    [`${rate}%`, 'Reached interview'],
+  ];
+  return (
+    <section className="pipeline" aria-label="Pipeline summary">
+      <div className="kpis">
+        {kpis.map(([v, l]) => (
+          <div className="kpi" key={l}>
+            <b>{v}</b>
+            <span>{l}</span>
+          </div>
+        ))}
+      </div>
+      <div className="funnel" role="img" aria-label={STATUSES.map((s) => `${count(s)} ${STATUS_LABEL[s]}`).join(', ')}>
+        {STATUSES.map((s) => (
+          <i key={s} data-status={s} style={{ flexGrow: count(s), flexBasis: 0 }} />
+        ))}
+      </div>
+      <div className="legend">
+        {STATUSES.map((s) => (
+          <span key={s} data-status={s}>
+            <i /> {STATUS_LABEL[s]} {count(s)}
+          </span>
+        ))}
+      </div>
+    </section>
   );
 }

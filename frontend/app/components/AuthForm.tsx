@@ -26,6 +26,16 @@ export default function AuthForm({ onAuthed }: { onAuthed: () => void }) {
   }
 
   return (
+    <div className="auth-wrap">
+      <div className="auth-hero">
+        <h2>Know where every application stands.</h2>
+        <p>Track roles on a board, then check your resume against each job description with quoted evidence.</p>
+        <div className="auth-demo" aria-hidden="true">
+          <div data-status="applied">Frontend Engineer <em>Applied</em></div>
+          <div data-status="interview">Full-Stack Developer <em>Interview</em></div>
+          <div data-status="offer">ML Engineer <em>Offer</em></div>
+        </div>
+      </div>
     <form className="panel auth" onSubmit={submit}>
       <h1>{mode === 'login' ? 'Sign in' : 'Create your account'}</h1>
 
@@ -63,5 +73,6 @@ export default function AuthForm({ onAuthed }: { onAuthed: () => void }) {
         {mode === 'login' ? 'No account yet? Register' : 'Already registered? Sign in'}
       </button>
     </form>
+    </div>
   );
 }

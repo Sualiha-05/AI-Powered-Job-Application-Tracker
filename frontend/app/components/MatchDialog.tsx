@@ -194,9 +194,19 @@ function ResultView({ result }: { result: MatchResult }) {
         </p>
       ) : (
         <>
-          <p className="score-line">
-            <strong>{pct(result.score)}%</strong> of requirements supported ({supported} of {reqs.length}) · {result.resumeFilename}
-          </p>
+          <div className="score-line">
+            <div
+              className="ring"
+              style={{ ['--p' as string]: pct(result.score), ['--ring' as string]: pct(result.score) >= 70 ? 'var(--ok)' : pct(result.score) >= 40 ? 'var(--s-interview)' : 'var(--bad)' }}
+            >
+              <b>{pct(result.score)}%</b>
+            </div>
+            <p style={{ margin: 0 }}>
+              <strong>{supported} of {reqs.length}</strong> requirements supported
+              <br />
+              <span className="hint">{result.resumeFilename}</span>
+            </p>
+          </div>
           <div className="meter" role="img" aria-label={`${pct(result.score)} percent supported`}>
             <span style={{ width: `${pct(result.score)}%` }} />
           </div>

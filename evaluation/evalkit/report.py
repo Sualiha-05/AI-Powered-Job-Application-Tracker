@@ -16,6 +16,19 @@ def _pm(ms, pct=False):
     return f"{m * 100:.0f}% ± {s * 100:.0f}" if pct else f"{m:.2f} ± {s:.2f}"
 
 
+def _tag_cell(t: dict) -> str:
+    if t["f1"] is not None:
+        return f"{t['f1']:.2f} (n={t['n']})"
+    return f"F1 undefined, accuracy {_num(t['accuracy'])} (n={t['n']})"  # no positives to find or none predicted
+
+
+def _sweep_note(det: list[dict]) -> list[str]:
+    tf = [r for r in det if r["matcher"] == "tfidf"]
+    same = len(tf) > 1 and len({(r["tp"], r["fp"], r["fn"], r["tn"]) for r in tf}) == 1
+    return ["> **The TF-IDF threshold sweep did not separate the thresholds:** every value gave identical decisions on this split, so this data cannot justify choosing one. "
+            "Say that the threshold is a default, not a tuned value.", ""] if same else []
+
+
 def to_markdown(result: dict, title: str = "Matcher evaluation") -> str:
     lines = [f"# {title}", "", f"Generated {datetime.datetime.now():%Y-%m-%d %H:%M}.", ""]
     lines += [
@@ -41,6 +54,10 @@ def to_markdown(result: dict, title: str = "Matcher evaluation") -> str:
     if llm_agg:
         lines.append(f"| {llm_agg['label']} (mean ± sd of {llm_agg['runs']} runs) | {_pm(llm_agg['coverage'], True)}% | {_pm(llm_agg['precision'])} | {_pm(llm_agg['recall'])} | {_pm(llm_agg['f1'])} | n/a | {_pm(llm_agg['accuracy'])} | | | | |")
     lines.append("")
+    lines += _sweep_note(det)
+    if llm_agg:
+        lines += ["> For the AI matcher, **± is the spread between repeats of the same data** (the model's own randomness). It is not a confidence interval: "
+                  "it says nothing about how far the result would move on other postings or resumes.", ""]
 
     lines += ["## Ranking: does a higher score mean a better-supported resume?", "",
               "Spearman correlation between the matcher's score and the share of requirements you labeled as supported (1 = same order, 0 = unrelated).", "",
@@ -57,14 +74,14 @@ def to_markdown(result: dict, title: str = "Matcher evaluation") -> str:
                   "| Resume tag | " + " | ".join(r["label"] + (f" #{r['run']}" if r["matcher"] == "llm" else "") for r in result["runs"]) + " |",
                   "|---|" + "---|" * len(result["runs"])]
         for t in tags:
-            cells = [(_num(r["per_tag"][t]["f1"]) + f" (n={r['per_tag'][t]['n']})") if t in r["per_tag"] else "n/a" for r in result["runs"]]
+            cells = [_tag_cell(r["per_tag"][t]) if t in r["per_tag"] else "n/a" for r in result["runs"]]
             lines.append(f"| {t} | " + " | ".join(cells) + " |")
         lines.append("")
 
     ev = [r for r in result["runs"] if r["evidence_n"]]
     if ev:
         lines += ["## Evidence lines", "", "For requirements both you and the matcher call supported: how often the matcher cited at least one line you marked as evidence.", ""]
-        lines += [f"- {r['label']}: {_pct(r['evidence_hit_rate'])} ({r['evidence_n']} cases)" for r in ev] + [""]
+        lines += [f"- {r['label']}{' #' + str(r['run']) if r['matcher'] == 'llm' else ''}: {_pct(r['evidence_hit_rate'])} ({r['evidence_n']} cases)" for r in ev] + [""]
 
     if llm_agg:
         lines += ["## AI matcher stability and cost", "",

@@ -1,10 +1,11 @@
 import argparse
+import datetime
 from pathlib import Path
 
 from . import _paths  # noqa: F401
 from .bias import audit, load_names, planned_calls, select_pairs, to_markdown
 from .cli import RESULTS, confirm_llm, llm_setup, stamp, write_outputs
-from .runner import Cache, MatcherConfig
+from .runner import Cache, MatcherConfig, labels_hash
 from .schema import DatasetError, load_dataset, validate
 
 NAMES = Path(__file__).resolve().parents[1] / "data" / "names.json"
@@ -51,8 +52,11 @@ def main(argv=None) -> int:
         confirm_llm(planned_calls(len(pairs), names, args.names_per_group, args.repeats), prov, model, args.yes)
 
     results = [audit(dataset, cfg, names, pairs, cache, client, args.names_per_group, args.repeats, args.sleep if cfg.is_llm else 0.0) for cfg in cfgs]
-    markdown = to_markdown(results, names)
-    js, md = write_outputs(out_dir, args.name or f"bias-{Path(args.data).name}-{stamp()}", {"audits": results, "names": names}, markdown)
+    meta = {"dataset": args.data, "labels_hash": labels_hash(dataset), "n_pairs": len(pairs), "split": args.split, "max_pairs": args.max_pairs,
+            "names_per_group": args.names_per_group, "names_file": args.names, "repeats": args.repeats, "tfidf_threshold": args.tfidf_threshold,
+            "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}
+    markdown = to_markdown(results, names, meta=meta)
+    js, md = write_outputs(out_dir, args.name or f"bias-{Path(args.data).name}-{stamp()}", {"audits": results, "names": names, "meta": meta}, markdown)
     print("\n" + markdown)
     print(f"Saved: {md}\n       {js}")
     return 0

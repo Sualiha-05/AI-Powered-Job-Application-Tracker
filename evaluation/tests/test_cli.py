@@ -48,7 +48,7 @@ def test_ai_failures_are_reported_and_the_run_stops_early(tmp_path):
 
 def test_bias_audit_runs_and_reports(tmp_path):
     r = run("bias_audit.py", "--data", str(EXAMPLE), "--max-pairs", "3", "--names-per-group", "1", "--out", str(tmp_path), "--name", "b")
-    assert r.returncode == 0 and "Name-swap bias audit" in r.stdout and json.loads((tmp_path / "b.json").read_text())["audits"]
+    assert r.returncode == 0 and "Name-swap bias audit" in r.stdout and "labels fingerprint" in r.stdout and json.loads((tmp_path / "b.json").read_text())["meta"]["labels_hash"]
 
 
 def test_scripted_session_from_empty_folder_to_scores(tmp_path):

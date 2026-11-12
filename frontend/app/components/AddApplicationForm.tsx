@@ -11,6 +11,7 @@ export default function AddApplicationForm({
   const [title, setTitle] = useState('');
   const [jd, setJd] = useState('');
   const [busy, setBusy] = useState(false);
+  const [open, setOpen] = useState(false);
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -20,17 +21,25 @@ export default function AddApplicationForm({
       setCompany('');
       setTitle('');
       setJd('');
+      setOpen(false);
     } finally {
       setBusy(false);
     }
   }
 
+  if (!open)
+    return (
+      <button type="button" className="primary" onClick={() => setOpen(true)}>
+        + New application
+      </button>
+    );
+
   return (
-    <form className="panel add" onSubmit={submit}>
+    <form className="panel add" onSubmit={submit} style={{ flexBasis: '100%', margin: 0 }}>
       <div className="row">
         <label>
           Company
-          <input value={company} onChange={(e) => setCompany(e.target.value)} required />
+          <input autoFocus value={company} onChange={(e) => setCompany(e.target.value)} required />
         </label>
         <label>
           Role
@@ -43,6 +52,9 @@ export default function AddApplicationForm({
       </label>
       <button className="primary" type="submit" disabled={busy}>
         {busy ? 'Adding…' : 'Add application'}
+      </button>
+      <button type="button" className="link" onClick={() => setOpen(false)}>
+        Cancel
       </button>
     </form>
   );

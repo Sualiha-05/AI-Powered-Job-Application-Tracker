@@ -108,9 +108,18 @@ def audit(dataset: Dataset, cfg: MatcherConfig, names: dict[str, list[str]], pai
     }
 
 
-def to_markdown(results: list[dict], names: dict[str, list[str]], title: str = "Name-swap bias audit") -> str:
+def to_markdown(results: list[dict], names: dict[str, list[str]], title: str = "Name-swap bias audit", meta: dict | None = None) -> str:
     pct = lambda v: "n/a" if v is None else f"{v * 100:.1f}%"
-    lines = [f"# {title}", "",
+    lines = [f"# {title}", ""]
+    if meta:
+        lines += ["| | |", "|---|---|",
+                  f"| Dataset | `{meta['dataset']}` (labels fingerprint `{meta['labels_hash']}`) |",
+                  f"| Pairs audited | {meta['n_pairs']} (split: {meta['split']}, first {meta['max_pairs']} in alphabetical order) |",
+                  f"| Names | {meta['names_per_group']} per group, {len(names)} groups; list: `{meta['names_file']}` |",
+                  f"| Noise baseline | each resume run {meta['repeats']} times with the same name |",
+                  f"| TF-IDF threshold | {meta['tfidf_threshold']} |",
+                  f"| Generated | {meta['generated']} |", ""]
+    lines += [
              "Only the name on the first line of each resume was changed. *Noise* is the flip rate when the same resume is run twice with the same name.", "",
              "| Matcher | Pairs | Name variants | Decisions flipped by a name change | Flipped with no change (noise) | Beyond noise | Variants with any flip |", "|---|---|---|---|---|---|---|"]
     for r in results:

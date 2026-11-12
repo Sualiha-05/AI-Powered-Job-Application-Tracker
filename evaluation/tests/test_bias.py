@@ -79,3 +79,13 @@ def test_markdown_report_explains_its_limits(example):
     r = audit(example, MatcherConfig("keyword"), NAMES, select_pairs(example, "all", 2), Cache(None), None, names_per_group=1, log=lambda *_: None)
     md = to_markdown([r], NAMES)
     assert "illustrative" in md and "small sample cannot show the absence of bias" in md and "None" not in md
+
+
+def test_bias_report_says_which_data_and_settings_it_describes(example):
+    from evalkit.runner import labels_hash
+    meta = {"dataset": "evaluation/data/mine", "labels_hash": labels_hash(example), "n_pairs": 2, "split": "all", "max_pairs": 8,
+            "names_per_group": 1, "names_file": "names.json", "repeats": 2, "tfidf_threshold": 0.6, "generated": "2026-10-31 12:00"}
+    r = audit(example, MatcherConfig("keyword"), NAMES, select_pairs(example, "all", 2), Cache(None), None, names_per_group=1, log=lambda *_: None)
+    md = to_markdown([r], NAMES, meta=meta)
+    assert f"labels fingerprint `{labels_hash(example)}`" in md and "split: all" in md and "run 2 times" in md
+

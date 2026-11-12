@@ -89,6 +89,7 @@ Without a key, `method=llm` returns 503 and everything else keeps working.
 
 `evaluation/` measures the matchers against labels you write and runs a name-swap bias audit. See [evaluation/README.md](evaluation/README.md).
 Try it on the synthetic example: `python evaluation/run_eval.py --data evaluation/data/example --split all`.
+Results, limitations and the bias audit: [docs/EVALUATION.md](docs/EVALUATION.md).
 
 ## Tests
 
